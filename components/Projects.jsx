@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCollection, COLLECTIONS } from '@/lib/firestore';
 
 const PRJ_CSS = `
   .prj-section {
@@ -108,7 +109,7 @@ const PRJ_CSS = `
   }
 `;
 
-const projects = [
+const DEFAULT_PROJECTS = [
   {
     icon: 'fas fa-mobile-alt', iconColor: '#38bdf8',
     visualBg: 'linear-gradient(135deg, rgba(56,189,248,.08), rgba(56,189,248,.02))',
@@ -183,7 +184,17 @@ const projects = [
   },
 ];
 
-const Projects = () => (
+const Projects = () => {
+  const [projects, setProjects] = useState(DEFAULT_PROJECTS);
+
+  useEffect(() => {
+    getCollection(COLLECTIONS.PROJECTS).then(data => {
+      const live = data.filter(p => p.published !== false).sort((a,b) => (a.order??99)-(b.order??99));
+      if (live.length > 0) setProjects(live);
+    }).catch(() => {});
+  }, []);
+
+  return (
   <>
     <style>{PRJ_CSS}</style>
     <section className="prj-section" id="projects">
@@ -200,27 +211,33 @@ const Projects = () => (
         </div>
 
         <div className="prj-grid">
-          {projects.map((p, idx) => (
+          {projects.map((p, idx) => {
+            const badgeText  = p.badgeText  ?? p.badge?.text  ?? '';
+            const badgeBg    = p.badgeBg    ?? p.badge?.bg    ?? 'rgba(56,189,248,.1)';
+            const badgeColor = p.badgeColor ?? p.badge?.color ?? '#38bdf8';
+            const visualBg   = p.visualBg ?? `linear-gradient(135deg, ${badgeBg}, rgba(255,255,255,.01))`;
+            return (
             <div className="prj-card fade-in" key={idx} style={{ animationDelay: `${0.06 * idx}s` }}>
-              <div className="prj-card-visual" style={{ background: p.visualBg }}>
+              <div className="prj-card-visual" style={{ background: visualBg }}>
                 <i className={p.icon} style={{ color: p.iconColor }} />
               </div>
               <div className="prj-card-body">
-                <span className="prj-card-badge" style={{ background: p.badge.bg, color: p.badge.color }}>
-                  {p.badge.text}
+                <span className="prj-card-badge" style={{ background: badgeBg, color: badgeColor }}>
+                  {badgeText}
                 </span>
                 <h3 className="prj-card-name">{p.title}</h3>
                 <p className="prj-card-desc">{p.description}</p>
                 <div className="prj-card-tags">
-                  {p.skills.map((s, i) => <span key={i} className="prj-card-tag">{s}</span>)}
+                  {(p.skills || []).map((s, i) => <span key={i} className="prj-card-tag">{s}</span>)}
                 </div>
-                <a href={p.link} className="prj-card-link">
+                <a href={p.link || p.github || '#'} className="prj-card-link">
                   View Details
                   <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </a>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div style={{ textAlign: 'center' }}>
@@ -232,6 +249,7 @@ const Projects = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Projects;
