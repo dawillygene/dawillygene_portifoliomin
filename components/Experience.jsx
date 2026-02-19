@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCollection, COLLECTIONS } from '@/lib/firestore';
 
 const EXP_CSS = `
   .exp-section {
@@ -100,7 +101,7 @@ const EXP_CSS = `
   }
 `;
 
-const experiences = [
+const DEFAULT_EXPERIENCES = [
   {
     period: '2024 — Present',
     title: 'Full Stack Developer',
@@ -145,7 +146,17 @@ const experiences = [
   },
 ];
 
-const Experience = () => (
+const Experience = () => {
+  const [experiences, setExperiences] = useState(DEFAULT_EXPERIENCES);
+
+  useEffect(() => {
+    getCollection(COLLECTIONS.EXPERIENCE).then(data => {
+      const live = data.filter(e => e.published !== false).sort((a,b) => (a.order??99)-(b.order??99));
+      if (live.length > 0) setExperiences(live);
+    }).catch(() => {});
+  }, []);
+
+  return (
   <>
     <style>{EXP_CSS}</style>
     <section className="exp-section" id="experience">
@@ -183,6 +194,7 @@ const Experience = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Experience;
