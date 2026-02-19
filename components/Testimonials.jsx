@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCollection, COLLECTIONS } from '@/lib/firestore';
 
 const TEST_CSS = `
   .test-section {
@@ -92,7 +93,7 @@ const TEST_CSS = `
   }
 `;
 
-const testimonials = [
+const DEFAULT_TESTIMONIALS = [
   {
     stars: 5,
     text: "Dawilly consistently demonstrated outstanding technical skills and dedication in software engineering during his studies. His problem-solving ability is impressive and he quickly adapts to new challenges.",
@@ -136,7 +137,17 @@ const renderStars = (count) => {
   );
 };
 
-const Testimonials = () => (
+const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState(DEFAULT_TESTIMONIALS);
+
+  useEffect(() => {
+    getCollection(COLLECTIONS.TESTIMONIALS).then(data => {
+      const live = data.filter(t => t.published !== false).sort((a,b) => (a.order??99)-(b.order??99));
+      if (live.length > 0) setTestimonials(live);
+    }).catch(() => {});
+  }, []);
+
+  return (
   <>
     <style>{TEST_CSS}</style>
     <section className="test-section">
@@ -159,12 +170,12 @@ const Testimonials = () => (
                 <i className="fas fa-quote-right" />
               </div>
               {renderStars(t.stars)}
-              <p className="test-text">"{t.text}"</p>
+              <p className="test-text">"{t.text || t.content}"</p>
               <div className="test-author">
                 <div className="test-avatar">{t.initials}</div>
                 <div>
-                  <div className="test-author-name">{t.name}</div>
-                  <div className="test-author-title">{t.title}</div>
+                  <div className="test-author-name">{t.name || t.author}</div>
+                  <div className="test-author-title">{t.title || t.company}</div>
                 </div>
               </div>
             </div>
@@ -173,6 +184,7 @@ const Testimonials = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Testimonials;
