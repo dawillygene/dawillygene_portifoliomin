@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCollection, COLLECTIONS } from '@/lib/firestore';
 
 const SVC_CSS = `
   .svc-section {
@@ -86,7 +87,7 @@ const SVC_CSS = `
   }
 `;
 
-const services = [
+const DEFAULT_SERVICES = [
   {
     number: '01', icon: 'fas fa-laptop-code',
     iconBg: 'rgba(56,189,248,.08)', iconColor: '#38bdf8',
@@ -173,7 +174,17 @@ const services = [
   },
 ];
 
-const Services = () => (
+const Services = () => {
+  const [services, setServices] = useState(DEFAULT_SERVICES);
+
+  useEffect(() => {
+    getCollection(COLLECTIONS.SERVICES).then(data => {
+      const live = data.filter(s => s.published !== false).sort((a,b) => (a.order??99)-(b.order??99));
+      if (live.length > 0) setServices(live);
+    }).catch(() => {});
+  }, []);
+
+  return (
   <>
     <style>{SVC_CSS}</style>
     <section className="svc-section" id="services">
@@ -197,11 +208,14 @@ const Services = () => (
                 <i className={svc.icon} />
               </div>
               <h3 className="svc-card-title">{svc.title}</h3>
-              <p className="svc-card-desc">{svc.desc}</p>
+              <p className="svc-card-desc">{svc.desc || svc.description}</p>
               <div className="svc-tags">
-                {svc.tags.map((t, i) => (
-                  <span key={i} className="svc-tag" style={{ background: t.bg, color: t.color }}>{t.name}</span>
-                ))}
+                {(svc.tags || []).map((t, i) => {
+                  const name = typeof t === 'string' ? t : t.name;
+                  const bg = typeof t === 'string' ? (svc.iconBg || 'rgba(56,189,248,.1)') : t.bg;
+                  const color = typeof t === 'string' ? (svc.iconColor || '#38bdf8') : t.color;
+                  return <span key={i} className="svc-tag" style={{ background: bg, color }}>{name}</span>;
+                })}
               </div>
             </div>
           ))}
@@ -209,6 +223,7 @@ const Services = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Services;
