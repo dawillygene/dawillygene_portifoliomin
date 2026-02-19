@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getDocument, COLLECTIONS } from '@/lib/firestore';
 
 /* ──────────────────────────────────────────────────────────
    Premium Hero – $10M brand-quality, glassmorphism + orbital
@@ -292,7 +293,31 @@ const HERO_CSS = `
   }
 `;
 
-const Hero = () => (
+const DEFAULT_HERO = {
+  badge: 'Available for new projects',
+  headline1: 'I engineer systems',
+  headline2: 'that scale, last,',
+  headline3: 'and matter.',
+  subheadline: 'Dawilly Gene — Software Engineer & Full-Stack Developer. I break down complex technical problems to create integrity-focused solutions that connect technologies and people.',
+  cta1Label: 'Get In Touch', cta1Href: '#contact',
+  cta2Label: 'View My Work', cta2Href: '#projects',
+  stats: [
+    { value: '5+', label: 'Years Building' },
+    { value: '30+', label: 'Projects Shipped' },
+    { value: '100%', label: 'Client Satisfaction' },
+  ],
+};
+
+const Hero = () => {
+  const [hero, setHero] = useState(DEFAULT_HERO);
+
+  useEffect(() => {
+    getDocument(COLLECTIONS.HERO, 'main').then(data => {
+      if (data) setHero(h => ({ ...h, ...data, stats: data.stats?.length ? data.stats : h.stats }));
+    }).catch(() => {});
+  }, []);
+
+  return (
   <>
     <style>{HERO_CSS}</style>
 
@@ -341,7 +366,7 @@ const Hero = () => (
             {/* Status badge */}
             <div className="glass-badge" style={{ marginBottom: '2rem' }}>
               <span className="dot" />
-              Available for new projects
+              {hero.badge}
             </div>
 
             {/* Headline */}
@@ -355,12 +380,12 @@ const Hero = () => (
                 marginBottom: '1.5rem',
               }}
             >
-              I engineer systems
+              {hero.headline1}
               <br />
               that{' '}
-              <span className="hero-headline-gradient">scale, last,</span>
+              <span className="hero-headline-gradient">{hero.headline2 || 'scale, last,'}</span>
               <br />
-              and matter.
+              {hero.headline3}
             </h1>
 
             {/* Sub-headline */}
@@ -373,31 +398,24 @@ const Hero = () => (
                 marginBottom: '2.5rem',
               }}
             >
-              <span style={{ color: 'rgba(255,255,255,.7)' }}>Dawilly Gene</span> — Software
-              Engineer &amp; Full-Stack Developer. I break down complex technical
-              problems to create integrity-focused solutions that connect
-              technologies and people.
+              {hero.subheadline}
             </p>
 
             {/* CTAs */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-              <a href="#contact" className="cta-primary">
-                Get In Touch
+              <a href={hero.cta1Href || '#contact'} className="cta-primary">
+                {hero.cta1Label}
                 <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
-              <a href="#projects" className="cta-secondary">
-                View My Work
+              <a href={hero.cta2Href || '#projects'} className="cta-secondary">
+                {hero.cta2Label}
                 <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M7 17l9.2-9.2M17 17V7H7" /></svg>
               </a>
             </div>
 
             {/* Stats */}
             <div className="hero-stats">
-              {[
-                { value: '5+', label: 'Years Building' },
-                { value: '30+', label: 'Projects Shipped' },
-                { value: '100%', label: 'Client Satisfaction' },
-              ].map((s, i) => (
+              {(hero.stats || []).map((s, i) => (
                 <div key={i} className="anim-fade-up" style={{ animationDelay: `${0.5 + i * 0.15}s` }}>
                   <div className="hero-stat-value">{s.value}</div>
                   <div className="hero-stat-label">{s.label}</div>
@@ -486,6 +504,7 @@ const Hero = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Hero;
