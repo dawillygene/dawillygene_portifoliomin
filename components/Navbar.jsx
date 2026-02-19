@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const NAV_CSS = `
   .nav-premium {
@@ -18,15 +20,19 @@ const NAV_CSS = `
     padding: .7rem 0;
   }
   .nav-logo {
-    font-size: 1.4rem; font-weight: 800; letter-spacing: -.03em;
+    font-size: 1.25rem; font-weight: 800; letter-spacing: -.03em;
     text-decoration: none;
     background: linear-gradient(135deg, #38bdf8, #818cf8);
     -webkit-background-clip: text; background-clip: text; color: transparent;
     transition: opacity .3s;
   }
   .nav-logo:hover { opacity: .85; }
+  .nav-logo-sub {
+    display: block; font-size: .55rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: rgba(255,255,255,.3); line-height: 1;
+  }
   .nav-logo-dot {
-    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
     background: #38bdf8; margin-left: 2px;
     box-shadow: 0 0 10px rgba(56,189,248,.5);
   }
@@ -37,7 +43,7 @@ const NAV_CSS = `
     color: rgba(255,255,255,.5); text-decoration: none;
     transition: all .3s; border-radius: 8px;
   }
-  .nav-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+  .nav-link:hover, .nav-link.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
   .nav-link::after {
     content: ''; position: absolute; bottom: 2px; left: 50%;
     width: 0; height: 2px;
@@ -45,7 +51,7 @@ const NAV_CSS = `
     border-radius: 1px; transition: all .3s cubic-bezier(.4,0,.2,1);
     transform: translateX(-50%);
   }
-  .nav-link:hover::after { width: 55%; }
+  .nav-link:hover::after, .nav-link.active::after { width: 55%; }
   .nav-cta {
     padding: .48rem 1.2rem; font-size: .78rem; font-weight: 600;
     color: #fff; background: linear-gradient(135deg, #2563eb, #7c3aed);
@@ -87,7 +93,7 @@ const NAV_CSS = `
     color: rgba(255,255,255,.6); text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,.04); transition: all .3s;
   }
-  .nav-drawer-link:hover { color: #38bdf8; padding-left: .5rem; }
+  .nav-drawer-link:hover, .nav-drawer-link.active { color: #38bdf8; padding-left: .5rem; }
   .nav-drawer-cta {
     margin-top: 1.5rem; padding: .75rem 1.5rem; text-align: center;
     font-weight: 600; font-size: .9rem; color: #fff;
@@ -102,25 +108,46 @@ const NAV_CSS = `
 `;
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/team', label: 'Team' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <>
       <style>{NAV_CSS}</style>
-      <nav className="nav-premium" id="navbar">
+      <nav className={`nav-premium${scrolled ? ' scrolled' : ''}`} id="navbar">
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <a href="#" className="nav-logo">DawillyGene<span className="nav-logo-dot" /></a>
+          <Link href="/" className="nav-logo">
+            DawillyGene<span className="nav-logo-dot" />
+            <span className="nav-logo-sub">Genelabs Software Tz</span>
+          </Link>
           <div className="nav-links">
-            {links.map(l => <a key={l.href} href={l.href} className="nav-link">{l.label}</a>)}
-            <a href="#contact" className="nav-cta">Let's Talk</a>
+            {links.map(l => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`nav-link${pathname === l.href ? ' active' : ''}`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link href="/contact" className="nav-cta">Let's Talk</Link>
           </div>
           <button className="nav-mob-btn" onClick={() => setOpen(true)} aria-label="Menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -132,11 +159,22 @@ const Navbar = () => {
         <button className="nav-drawer-close" onClick={() => setOpen(false)}>
           <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" /></svg>
         </button>
-        {links.map(l => <a key={l.href} href={l.href} className="nav-drawer-link" onClick={() => setOpen(false)}>{l.label}</a>)}
-        <a href="#contact" className="nav-drawer-cta" onClick={() => setOpen(false)}>Let's Talk</a>
+        {links.map(l => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className={`nav-drawer-link${pathname === l.href ? ' active' : ''}`}
+            onClick={() => setOpen(false)}
+          >
+            {l.label}
+          </Link>
+        ))}
+        <Link href="/contact" className="nav-drawer-cta" onClick={() => setOpen(false)}>Let's Talk</Link>
       </div>
     </>
   );
 };
 
 export default Navbar;
+
+
