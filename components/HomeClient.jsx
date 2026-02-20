@@ -14,102 +14,55 @@ import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 
 export default function HomeClient() {
-    useEffect(() => {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const fadeInObserver = new window.IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-        fadeElements.forEach((el) => fadeInObserver.observe(el));
+  useEffect(() => {
+    /* ── Scroll handler: navbar & BackToTop ── */
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
 
-        const navbar = document.getElementById('navbar');
-        const backToTop = document.getElementById('backToTop');
-        const onScroll = () => {
-            if (window.scrollY > 100) {
-                navbar && navbar.classList.add('scrolled');
-                if (backToTop) {
-                    backToTop.style.opacity = '1';
-                    backToTop.style.pointerEvents = 'auto';
-                }
-            } else {
-                navbar && navbar.classList.remove('scrolled');
-                if (backToTop) {
-                    backToTop.style.opacity = '0';
-                    backToTop.style.pointerEvents = 'none';
-                }
-            }
-        };
-        window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      const scrolled = window.scrollY > 80;
+      navbar?.classList.toggle('scrolled', scrolled);
+      if (backToTop) {
+        backToTop.style.opacity = scrolled ? '1' : '0';
+        backToTop.style.pointerEvents = scrolled ? 'auto' : 'none';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-        const handleAnchorClick = (e) => {
-            const targetId = e.currentTarget.getAttribute('href');
-            if (targetId && targetId.startsWith('#') && targetId !== '#') {
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth',
-                    });
-                }
-            }
-        };
-        const anchors = document.querySelectorAll('a[href^="#"]');
-        anchors.forEach((anchor) => {
-            anchor.addEventListener('click', handleAnchorClick);
-        });
-
-        fadeElements.forEach((element) => {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= window.innerHeight) {
-                element.classList.add('visible');
-            }
-        });
-
-        const skillsScroll = document.querySelector('.skills-scroll');
-        let skillsObserver;
-        if (skillsScroll) {
-            skillsObserver = new window.IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    } else {
-                        entry.target.style.animationPlayState = 'paused';
-                    }
-                });
-            });
-            skillsObserver.observe(skillsScroll);
+    /* ── Smooth anchor scrolling ── */
+    const handleAnchor = (e) => {
+      const href = e.currentTarget.getAttribute('href');
+      if (href?.startsWith('#') && href !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
         }
+      }
+    };
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach((a) => a.addEventListener('click', handleAnchor));
 
-        return () => {
-            window.removeEventListener('scroll', onScroll);
-            anchors.forEach((anchor) => {
-                anchor.removeEventListener('click', handleAnchorClick);
-            });
-            fadeInObserver.disconnect();
-            if (skillsObserver && skillsScroll) skillsObserver.unobserve(skillsScroll);
-        };
-    }, []);
+    /* ── Cleanup ── */
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      anchors.forEach((a) => a.removeEventListener('click', handleAnchor));
+    };
+  }, []);
 
-    return (
-        <>
-            <Navbar />
-            <Hero />
-            <SkillsScroll />
-            <Services />
-            <Skills />
-            <Projects />
-            <Experience />
-            <Testimonials />
-            <Contact />
-            <Footer />
-            <BackToTop />
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <SkillsScroll />
+      <Services />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Testimonials />
+      <Contact />
+      <Footer />
+      <BackToTop />
+    </>
+  );
 }
