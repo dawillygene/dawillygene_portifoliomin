@@ -218,11 +218,11 @@ const Contact = () => (
           <div className="ct-form-panel fade-in" style={{ animationDelay: '.25s' }}>
             <form onSubmit={e => e.preventDefault()}>
               <div className="ct-form-row">
-                <input type="text" placeholder="Your Name" required className="ct-input" />
-                <input type="email" placeholder="Your Email" required className="ct-input" />
+                <input type="text" placeholder="Your Name" required className="ct-input" suppressHydrationWarning />
+                <input type="email" placeholder="Your Email" required className="ct-input" suppressHydrationWarning />
               </div>
-              <input type="text" placeholder="Subject" required className="ct-input" />
-              <textarea rows="6" placeholder="Tell me about your project..." required className="ct-textarea" />
+              <input type="text" placeholder="Subject" required className="ct-input" suppressHydrationWarning />
+              <textarea rows="6" placeholder="Tell me about your project..." required className="ct-textarea" suppressHydrationWarning />
               <button type="submit" className="ct-submit">
                 Send Message
                 <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
