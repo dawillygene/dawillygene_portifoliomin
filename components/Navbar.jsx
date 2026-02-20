@@ -3,109 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const NAV_CSS = `
-  .nav-premium {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
-    padding: 1.1rem 0;
-    transition: all .4s cubic-bezier(.4,0,.2,1);
-    background: transparent;
-  }
-  .nav-premium.scrolled {
-    background: rgba(10,10,15,.78);
-    backdrop-filter: blur(24px) saturate(1.4);
-    -webkit-backdrop-filter: blur(24px) saturate(1.4);
-    border-bottom: 1px solid rgba(255,255,255,.04);
-    box-shadow: 0 4px 30px rgba(0,0,0,.35);
-    padding: .7rem 0;
-  }
-  .nav-logo {
-    font-size: 1.25rem; font-weight: 800; letter-spacing: -.03em;
-    text-decoration: none;
-    background: linear-gradient(135deg, #38bdf8, #818cf8);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    transition: opacity .3s;
-  }
-  .nav-logo:hover { opacity: .85; }
-  .nav-logo-sub {
-    display: block; font-size: .55rem; font-weight: 500; letter-spacing: .1em;
-    text-transform: uppercase; color: rgba(255,255,255,.3); line-height: 1;
-  }
-  .nav-logo-dot {
-    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-    background: #38bdf8; margin-left: 2px;
-    box-shadow: 0 0 10px rgba(56,189,248,.5);
-  }
-  .nav-links { display: flex; align-items: center; gap: .15rem; }
-  .nav-link {
-    position: relative; padding: .45rem .9rem;
-    font-size: .78rem; font-weight: 500; letter-spacing: .03em;
-    color: rgba(255,255,255,.5); text-decoration: none;
-    transition: all .3s; border-radius: 8px;
-  }
-  .nav-link:hover, .nav-link.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
-  .nav-link::after {
-    content: ''; position: absolute; bottom: 2px; left: 50%;
-    width: 0; height: 2px;
-    background: linear-gradient(90deg, #38bdf8, #818cf8);
-    border-radius: 1px; transition: all .3s cubic-bezier(.4,0,.2,1);
-    transform: translateX(-50%);
-  }
-  .nav-link:hover::after, .nav-link.active::after { width: 55%; }
-  .nav-cta {
-    padding: .48rem 1.2rem; font-size: .78rem; font-weight: 600;
-    color: #fff; background: linear-gradient(135deg, #2563eb, #7c3aed);
-    border: none; border-radius: 8px; cursor: pointer;
-    transition: all .3s; text-decoration: none; margin-left: .5rem;
-  }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,.4); }
-  .nav-mob-btn {
-    display: none; background: none; border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px; padding: .5rem; color: rgba(255,255,255,.7); cursor: pointer;
-    transition: all .3s;
-  }
-  .nav-mob-btn:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.2); }
-  .nav-drawer {
-    position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
-    background: rgba(10,10,15,.96); backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-left: 1px solid rgba(255,255,255,.06);
-    transform: translateX(100%);
-    transition: transform .4s cubic-bezier(.4,0,.2,1);
-    z-index: 301; padding: 2rem; display: flex; flex-direction: column;
-  }
-  .nav-drawer.open { transform: translateX(0); }
-  .nav-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,.5);
-    backdrop-filter: blur(4px); z-index: 300;
-    opacity: 0; pointer-events: none; transition: opacity .3s;
-  }
-  .nav-overlay.open { opacity: 1; pointer-events: auto; }
-  .nav-drawer-close {
-    align-self: flex-end; background: none;
-    border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
-    padding: .4rem .6rem; color: rgba(255,255,255,.6);
-    cursor: pointer; margin-bottom: 2rem; transition: all .3s;
-  }
-  .nav-drawer-close:hover { background: rgba(255,255,255,.05); color: #fff; }
-  .nav-drawer-link {
-    display: block; padding: .75rem 0; font-size: 1rem; font-weight: 500;
-    color: rgba(255,255,255,.6); text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,.04); transition: all .3s;
-  }
-  .nav-drawer-link:hover, .nav-drawer-link.active { color: #38bdf8; padding-left: .5rem; }
-  .nav-drawer-cta {
-    margin-top: 1.5rem; padding: .75rem 1.5rem; text-align: center;
-    font-weight: 600; font-size: .9rem; color: #fff;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    border-radius: 10px; text-decoration: none; transition: all .3s;
-  }
-  .nav-drawer-cta:hover { box-shadow: 0 4px 20px rgba(37,99,235,.4); }
-  @media(max-width:768px) {
-    .nav-links, .nav-cta { display: none !important; }
-    .nav-mob-btn { display: flex; }
-  }
-`;
+import { ThemeToggle } from '@/components/ThemeProvider';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -124,53 +22,263 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   return (
     <>
-      <style>{NAV_CSS}</style>
-      <nav className={`nav-premium${scrolled ? ' scrolled' : ''}`} id="navbar">
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/" className="nav-logo">
-            DawillyGene<span className="nav-logo-dot" />
-            <span className="nav-logo-sub">Genelabs Software Tz</span>
+      <nav
+        id="navbar"
+        role="navigation"
+        aria-label="Main navigation"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          zIndex: 200,
+          padding: scrolled ? '0.6rem 0' : '1rem 0',
+          background: scrolled ? 'var(--nav-bg)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--nav-border)' : '1px solid transparent',
+          boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
+          transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {/* Logo */}
+          <Link
+            href="/"
+            aria-label="Dawilly Gene — Home"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              textDecoration: 'none',
+            }}
+          >
+            <span
+              style={{
+                fontSize: '1.2rem',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                background: 'var(--accent-gradient)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                lineHeight: 1.2,
+              }}
+            >
+              DawillyGene
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: 'var(--accent)',
+                  marginLeft: 2,
+                  boxShadow: '0 0 10px var(--accent)',
+                  verticalAlign: 'super',
+                  fontSize: 0,
+                }}
+              />
+            </span>
+            <span
+              style={{
+                fontSize: '0.55rem',
+                fontWeight: 500,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'var(--text-quaternary)',
+                lineHeight: 1,
+              }}
+            >
+              Genelabs Software Tz
+            </span>
           </Link>
-          <div className="nav-links">
-            {links.map(l => (
+
+          {/* Desktop Nav */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.15rem' }} className="nav-desktop-links">
+            {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`nav-link${pathname === l.href ? ' active' : ''}`}
+                style={{
+                  position: 'relative',
+                  padding: '0.45rem 0.85rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                  color: pathname === l.href ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                  textDecoration: 'none',
+                  borderRadius: 'var(--radius-sm)',
+                  background: pathname === l.href ? 'var(--accent-light)' : 'transparent',
+                  transition: 'all 0.25s',
+                }}
               >
                 {l.label}
               </Link>
             ))}
-            <Link href="/contact" className="nav-cta">Let's Talk</Link>
+            <ThemeToggle />
+            <Link
+              href="/contact"
+              style={{
+                padding: '0.48rem 1.2rem',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                color: 'white',
+                background: 'var(--accent-gradient)',
+                border: 'none',
+                borderRadius: 'var(--radius-sm)',
+                textDecoration: 'none',
+                marginLeft: '0.4rem',
+                transition: 'all 0.25s',
+              }}
+            >
+              Let&apos;s Talk
+            </Link>
           </div>
-          <button className="nav-mob-btn" onClick={() => setOpen(true)} aria-label="Menu">
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
-          </button>
+
+          {/* Mobile menu + theme toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="nav-mobile-controls">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-primary)',
+                borderRadius: 'var(--radius-sm)',
+                padding: '0.5rem',
+                color: 'var(--text-tertiary)',
+                cursor: 'pointer',
+                transition: 'all 0.25s',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              }}
+            >
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
-      <div className={`nav-overlay ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
-      <div className={`nav-drawer ${open ? 'open' : ''}`}>
-        <button className="nav-drawer-close" onClick={() => setOpen(false)}>
-          <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" /></svg>
+
+      {/* Overlay */}
+      <div
+        onClick={() => setOpen(false)}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.4)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
+          zIndex: 300,
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? 'auto' : 'none',
+          transition: 'opacity 0.3s',
+        }}
+      />
+
+      {/* Mobile Drawer */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          width: 300,
+          height: '100vh',
+          background: 'var(--bg-glass-heavy)',
+          backdropFilter: 'blur(30px)',
+          WebkitBackdropFilter: 'blur(30px)',
+          borderLeft: '1px solid var(--border-primary)',
+          transform: open ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+          zIndex: 301,
+          padding: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <button
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+          style={{
+            alignSelf: 'flex-end',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border-primary)',
+            borderRadius: 'var(--radius-sm)',
+            padding: '0.4rem 0.6rem',
+            color: 'var(--text-tertiary)',
+            cursor: 'pointer',
+            marginBottom: '2rem',
+            transition: 'all 0.25s',
+          }}
+        >
+          <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
         </button>
-        {links.map(l => (
+
+        {links.map((l) => (
           <Link
             key={l.href}
             href={l.href}
-            className={`nav-drawer-link${pathname === l.href ? ' active' : ''}`}
             onClick={() => setOpen(false)}
+            style={{
+              display: 'block',
+              padding: '0.75rem 0',
+              fontSize: '1rem',
+              fontWeight: 500,
+              color: pathname === l.href ? 'var(--accent-text)' : 'var(--text-tertiary)',
+              textDecoration: 'none',
+              borderBottom: '1px solid var(--border-secondary)',
+              transition: 'all 0.25s',
+            }}
           >
             {l.label}
           </Link>
         ))}
-        <Link href="/contact" className="nav-drawer-cta" onClick={() => setOpen(false)}>Let's Talk</Link>
+
+        <Link
+          href="/contact"
+          onClick={() => setOpen(false)}
+          className="btn-primary"
+          style={{
+            marginTop: '1.5rem',
+            textAlign: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          Let&apos;s Talk
+        </Link>
       </div>
+
+      {/* Responsive styles */}
+      <style>{`
+        .nav-mobile-controls { display: flex; }
+        .nav-desktop-links { display: none !important; }
+        @media (min-width: 769px) {
+          .nav-mobile-controls { display: none !important; }
+          .nav-desktop-links { display: flex !important; }
+        }
+      `}</style>
     </>
   );
 };
