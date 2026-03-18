@@ -1,0 +1,1836 @@
+{
+  "project": {
+    "name": "dawillygene GeneLabs Tz",
+    "type": "Advanced professional software engineer portfolio",
+    "style": "Company-grade personal software studio portfolio",
+    "primary_goal": "Present the engineer as a serious product builder and software company-style brand, showcasing products, engineering quality, business value, trust signals, and conversion pathways.",
+    "target_audience": [
+      "Recruiters",
+      "Hiring managers",
+      "Clients",
+      "Partners",
+      "Investors",
+      "Technical collaborators"
+    ]
+  },
+  "technology_stack": {
+    "frontend_framework": "Next.js",
+    "styling": "Tailwind CSS",
+    "animation": "Framer Motion",
+    "content_format": "MDX/blog",
+    "content_management": [
+      "CMS",
+      "JSON-based content"
+    ],
+    "recommended_rendering_strategy": {
+      "primary": "Static generation where possible",
+      "secondary": "Server-side rendering for dynamic content if needed"
+    }
+  },
+  "branding": {
+    "brand_name": "Dawilly Gene",
+    "brand_positioning": "Software Engineer building secure, scalable digital products for real business operations.",
+    "brand_model": "Personal software studio / product engineering company",
+    "tone": [
+      "Professional",
+      "Confident",
+      "Precise",
+      "Technical",
+      "Business-aware"
+    ],
+    "design_direction": {
+      "visual_style": "Clean, premium, modern, product-focused",
+      "layout_preference": "Structured sections with strong spacing and sharp typography",
+      "interaction_style": "Controlled motion, polished transitions, no distracting animation",
+      "color_strategy": "Minimal, high-contrast, accessible"
+    }
+  },
+  "site_architecture": {
+    "pages": [
+      {
+        "name": "Home",
+        "required": true,
+        "purpose": "Act as the company-style homepage and primary conversion entry point."
+      },
+      {
+        "name": "Products",
+        "required": true,
+        "purpose": "Display the complete portfolio of products in categorized form."
+      },
+      {
+        "name": "Product Case Study",
+        "required": true,
+        "purpose": "Provide deep technical and business breakdowns of major products."
+      },
+      {
+        "name": "Services",
+        "required": true,
+        "purpose": "Explain engineering capabilities and solution offerings."
+      },
+      {
+        "name": "Engineering Standards",
+        "required": true,
+        "purpose": "Show development quality, security, testing, and delivery discipline."
+      },
+      {
+        "name": "About",
+        "required": true,
+        "purpose": "Present the founder-style professional profile."
+      },
+      {
+        "name": "Resume",
+        "required": true,
+        "purpose": "Provide recruiter-friendly career summary and downloadable CV."
+      },
+      {
+        "name": "Blog",
+        "required": true,
+        "purpose": "Support thought leadership, SEO, and ongoing technical publishing."
+      },
+      {
+        "name": "Contact",
+        "required": true,
+        "purpose": "Provide direct conversion path for inquiries and opportunities."
+      },
+      {
+        "name": "Open Source / Labs",
+        "required": false,
+        "purpose": "Show experiments, utilities, packages, and R&D work."
+      },
+      {
+        "name": "Testimonials",
+        "required": false,
+        "purpose": "Display credibility and social proof."
+      },
+      {
+        "name": "Architecture Library / Docs",
+        "required": false,
+        "purpose": "Show system diagrams, patterns, and documentation artifacts."
+      }
+    ]
+  },
+  "global_layout_requirements": {
+    "header": {
+      "required": true,
+      "elements": [
+        "Brand logo or text mark",
+        "Primary navigation",
+        "CTA button",
+        "Mobile menu"
+      ]
+    },
+    "footer": {
+      "required": true,
+      "elements": [
+        "Brand summary",
+        "Quick links",
+        "Social links",
+        "Contact details",
+        "Copyright",
+        "Optional newsletter signup"
+      ]
+    },
+    "navigation": {
+      "must_include": [
+        "Home",
+        "Products",
+        "Services",
+        "Engineering Standards",
+        "About",
+        "Blog",
+        "Contact"
+      ],
+      "behavior": [
+        "Sticky on scroll",
+        "Responsive",
+        "Keyboard accessible"
+      ]
+    }
+  },
+  "home_page": {
+    "hero_section": {
+      "required": true,
+      "fields": [
+        "Name or brand name",
+        "Role statement",
+        "Value proposition",
+        "Primary CTA",
+        "Secondary CTA",
+        "Visual product preview"
+      ],
+      "example_structure": {
+        "headline": "Dawilly Gene",
+        "subheadline": "Software Engineer building secure, scalable digital products for real business operations.",
+        "cta_primary": "View Products",
+        "cta_secondary": "View Case Studies"
+      }
+    },
+    "executive_summary_section": {
+      "required": true,
+      "purpose": "Present a company-style overview of engineering focus, delivery style, and value creation."
+    },
+    "featured_products_section": {
+      "required": true,
+      "minimum_products": 3,
+      "maximum_products": 6
+    },
+    "capabilities_preview_section": {
+      "required": true
+    },
+    "trust_signals_section": {
+      "required": true,
+      "examples": [
+        "Metrics",
+        "Organizations served",
+        "Testimonials",
+        "Certifications",
+        "Product status indicators"
+      ]
+    },
+    "final_cta_section": {
+      "required": true,
+      "goal": "Drive contact, hiring, demo requests, or collaboration."
+    }
+  },
+  "products_page": {
+    "required": true,
+    "sections": [
+      {
+        "name": "Featured Products",
+        "description": "Highest-value systems with strong presentation and direct links to case studies."
+      },
+      {
+        "name": "Product Archive",
+        "description": "Secondary projects, utilities, older systems, or academic work with context."
+      },
+      {
+        "name": "Concept Products / R&D",
+        "description": "Experiments, prototypes, or future-focused design work."
+      }
+    ],
+    "filters": [
+      "Category",
+      "Status",
+      "Technology",
+      "Industry",
+      "Year"
+    ],
+    "sorting_options": [
+      "Newest",
+      "Featured",
+      "Most complex",
+      "Most impactful"
+    ]
+  },
+  "product_card_schema": {
+    "required_fields": [
+      "product_name",
+      "product_type",
+      "short_summary",
+      "industry_domain",
+      "target_users",
+      "problem_solved",
+      "business_value",
+      "tech_stack",
+      "architecture_style",
+      "role_played",
+      "status",
+      "screenshots",
+      "key_features",
+      "case_study_link"
+    ],
+    "optional_fields": [
+      "live_demo_link",
+      "github_link",
+      "metrics",
+      "timeline",
+      "team_size",
+      "client_type"
+    ]
+  },
+  "case_study_page": {
+    "required": true,
+    "sections": [
+      "Project Overview",
+      "The Problem",
+      "Goals and Objectives",
+      "Users / Audience",
+      "Requirements",
+      "System Design",
+      "Architecture Diagram",
+      "Tech Stack and Why",
+      "Engineering Challenges",
+      "Solution",
+      "Screenshots / Gallery",
+      "Results / Impact",
+      "Lessons Learned",
+      "Future Roadmap"
+    ],
+    "project_overview_fields": [
+      "Project name",
+      "Timeline",
+      "Role",
+      "Client or internal product",
+      "Status",
+      "Links to demo, repository, docs"
+    ],
+    "impact_requirements": {
+      "must_show_measurable_outcomes": true,
+      "example_metrics": [
+        "Reduced manual work",
+        "Improved processing speed",
+        "Supported user scale",
+        "Lowered error rates",
+        "Increased reporting quality",
+        "Enabled remote or mobile access"
+      ]
+    }
+  },
+  "services_page": {
+    "required": true,
+    "service_categories": [
+      "Backend API Engineering",
+      "System Architecture",
+      "Admin Dashboard Systems",
+      "Business Management Platforms",
+      "Mobile-connected Platforms",
+      "Authentication and Authorization",
+      "Payment Integration",
+      "Reporting and Analytics",
+      "File and Document Management",
+      "Automation Systems",
+      "Security Hardening",
+      "Testing and Deployment"
+    ]
+  },
+  "engineering_standards_page": {
+    "required": true,
+    "sections": [
+      "API Design Standards",
+      "Database Design Standards",
+      "Authentication and Authorization Approach",
+      "Testing Strategy",
+      "Logging and Monitoring",
+      "Security Practices",
+      "Scalability Planning",
+      "Documentation Standards",
+      "Deployment Standards",
+      "Backup and Recovery Thinking"
+    ],
+    "api_design_standards": [
+      "Consistent endpoint naming",
+      "Request/response consistency",
+      "Pagination strategy",
+      "Filtering and sorting conventions",
+      "Structured error response format",
+      "Idempotency handling",
+      "Auth and permission enforcement",
+      "Versioning policy",
+      "Backward compatibility strategy",
+      "Rate limiting expectations"
+    ],
+    "database_design_standards": [
+      "Table naming conventions",
+      "Column naming conventions",
+      "Normalization vs practical denormalization",
+      "Foreign key usage",
+      "Soft delete policy",
+      "Audit trail requirements",
+      "Indexing policy",
+      "Transaction usage",
+      "Migration safety",
+      "Uniqueness constraints",
+      "Handling of financial or sensitive records"
+    ],
+    "testing_strategy": [
+      "Unit test boundaries",
+      "Integration test boundaries",
+      "End-to-end test scope",
+      "Mocking policy",
+      "Test naming conventions",
+      "Flaky test rejection",
+      "Critical coverage standards",
+      "Testing of security-sensitive flows",
+      "Testing race conditions and edge cases"
+    ]
+  },
+  "about_page": {
+    "required": true,
+    "sections": [
+      "Professional introduction",
+      "Engineering philosophy",
+      "Domain interests",
+      "Career direction",
+      "Working style",
+      "Mission statement"
+    ],
+    "optional_fields": [
+      "Professional photo",
+      "Founder note",
+      "Selected timeline highlights"
+    ]
+  },
+  "resume_page": {
+    "required": true,
+    "sections": [
+      "Experience summary",
+      "Career timeline",
+      "Education",
+      "Certifications",
+      "Core technologies",
+      "Selected achievements",
+      "Download CV button"
+    ]
+  },
+  "blog_page": {
+    "required": true,
+    "content_source": [
+      "MDX",
+      "CMS",
+      "JSON metadata"
+    ],
+    "required_features": [
+      "Article listing",
+      "Search",
+      "Category filters",
+      "Tag filters",
+      "Reading time",
+      "SEO metadata",
+      "Related posts"
+    ],
+    "content_ideas": [
+      "How I design secure APIs",
+      "Lessons from building operational software",
+      "RBAC design for business systems",
+      "Choosing backend stacks for production software",
+      "How I structure scalable MySQL schemas",
+      "Building software for African business contexts"
+    ]
+  },
+  "contact_page": {
+    "required": true,
+    "fields": [
+      "Full name",
+      "Email",
+      "Organization",
+      "Project type",
+      "Message",
+      "Budget range",
+      "Timeline"
+    ],
+    "additional_contact_elements": [
+      "Direct email",
+      "GitHub link",
+      "LinkedIn link",
+      "Availability status",
+      "Optional calendar booking link"
+    ]
+  },
+  "technology_stack_display": {
+    "required": true,
+    "grouping": {
+      "Languages": [
+        "JavaScript",
+        "TypeScript",
+        "PHP",
+        "Java",
+        "SQL"
+      ],
+      "Frontend": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion"
+      ],
+      "Backend": [
+        "Laravel",
+        "Express.js",
+        "Spring Boot"
+      ],
+      "Databases": [
+        "MySQL",
+        "MongoDB",
+        "Redis",
+        "Firebase"
+      ],
+      "Tooling": [
+        "Git",
+        "Docker",
+        "Postman",
+        "Linux",
+        "CI/CD"
+      ]
+    },
+    "presentation_rules": [
+      "Do not show a meaningless logo cloud only",
+      "Group technologies by engineering role",
+      "Optionally indicate strength truthfully"
+    ]
+  },
+  "github_and_code_credibility": {
+    "required": true,
+    "must_include": [
+      "Selected repositories",
+      "Code samples",
+      "Documentation examples",
+      "Architecture-focused repos",
+      "Utility or reusable package references"
+    ],
+    "quality_rules": [
+      "Do not feature weak or messy repositories",
+      "Highlight README quality",
+      "Show testing where available",
+      "Show project structure quality"
+    ]
+  },
+  "trust_and_social_proof": {
+    "required": true,
+    "elements": [
+      "Testimonials",
+      "Employer or collaborator feedback",
+      "Project metrics",
+      "Certifications",
+      "Awards or hackathons",
+      "Organizations worked with",
+      "Screenshots of validated feedback where appropriate"
+    ]
+  },
+  "advanced_company_style_sections": {
+    "required": true,
+    "sections": [
+      {
+        "name": "Product Strategy",
+        "purpose": "Explain how problems are analyzed and translated into solutions."
+      },
+      {
+        "name": "Industries Served / Target Domains",
+        "purpose": "Show domain familiarity and problem-space alignment."
+      },
+      {
+        "name": "Delivery Process",
+        "purpose": "Describe lifecycle from discovery to deployment and support."
+      },
+      {
+        "name": "Security and Reliability",
+        "purpose": "Show protection of systems and operational resilience."
+      },
+      {
+        "name": "Performance and Scale",
+        "purpose": "Show readiness for growth and operational efficiency."
+      },
+      {
+        "name": "Documentation and Handover",
+        "purpose": "Show maturity in delivery and maintainability."
+      }
+    ]
+  },
+  "delivery_process": {
+    "steps": [
+      "Discovery",
+      "Requirements analysis",
+      "Architecture design",
+      "Implementation",
+      "Testing",
+      "Deployment",
+      "Monitoring",
+      "Support and iteration"
+    ]
+  },
+  "security_and_reliability": {
+    "must_cover": [
+      "Role-based access control",
+      "Input validation",
+      "Audit trails",
+      "Secure authentication",
+      "Encryption strategy where relevant",
+      "Backup considerations",
+      "Logging",
+      "Rate limiting",
+      "Transaction safety"
+    ]
+  },
+  "performance_and_scalability": {
+    "must_cover": [
+      "Caching",
+      "Pagination",
+      "Background jobs",
+      "Query optimization",
+      "Database indexing",
+      "Modular architecture",
+      "Service boundaries",
+      "Asset optimization"
+    ]
+  },
+  "documentation_and_handover": {
+    "must_cover": [
+      "API docs",
+      "User documentation",
+      "Admin guides",
+      "Technical documentation",
+      "Deployment guides",
+      "Maintenance notes"
+    ]
+  },
+  "design_and_ux_requirements": {
+    "must_have": [
+      "Responsive design",
+      "Fast loading",
+      "Accessible contrast",
+      "Readable typography",
+      "Consistent spacing",
+      "Clear information hierarchy",
+      "Strong navigation",
+      "Controlled animation",
+      "Professional screenshot presentation",
+      "SEO-friendly structure"
+    ],
+    "optional_enhancements": [
+      "Dark/light mode",
+      "Search for products",
+      "Animated section transitions",
+      "CMS-driven editing workflow",
+      "Content tagging and filtering"
+    ]
+  },
+  "typography_standards": {
+    "required": true,
+    "philosophy": "Use macOS-native fonts as primary system, with carefully selected web fonts for headings and accent text to create a premium, accessible, professional appearance.",
+    "system_fonts": {
+      "macos_primary": {
+        "heading": "SF Pro Display",
+        "body": "SF Pro Text / -apple-system",
+        "code": "SF Mono",
+        "fallback_stack": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif"
+      },
+      "benefits": [
+        "Native to Apple ecosystems",
+        "Optimized for screen rendering",
+        "Zero network requests",
+        "Perfect kerning and spacing",
+        "Consistent with user's system",
+        "Accessibility-tested by Apple"
+      ]
+    },
+    "recommended_font_combinations": [
+      {
+        "name": "Premium Professional (RECOMMENDED FOR PORTFOLIOS)",
+        "heading_font": "SF Pro Display (macOS) or Playfair Display (fallback)",
+        "body_font": "SF Pro Text (macOS) or Inter (fallback)",
+        "code_font": "SF Mono (macOS) or JetBrains Mono (fallback)",
+        "use_case": "Serious, corporate, engineering-focused portfolio",
+        "characteristics": "Professional, clean, premium"
+      },
+      {
+        "name": "Modern Clean",
+        "heading_font": "Outfit (geometric, contemporary)",
+        "body_font": "Inter (modern, highly readable)",
+        "code_font": "JetBrains Mono (professional, open-source)",
+        "use_case": "Tech-forward, startup-style brand",
+        "characteristics": "Modern, approachable, innovative"
+      },
+      {
+        "name": "Elegant Luxury",
+        "heading_font": "Playfair Display (high-contrast serif)",
+        "body_font": "Crimson Text (elegant, readable serif)",
+        "code_font": "SF Mono or Monaco",
+        "use_case": "Premium brand, consulting, luxury services",
+        "characteristics": "Sophisticated, premium, timeless"
+      },
+      {
+        "name": "Balanced Professional",
+        "heading_font": "Playfair Display (elegant serif)",
+        "body_font": "Lato (humanist, friendly)",
+        "code_font": "JetBrains Mono",
+        "use_case": "Professional services, consulting",
+        "characteristics": "Approachable yet professional"
+      }
+    ],
+    "font_sizes_and_hierarchy": {
+      "h1_page_title": {
+        "desktop": "48px-56px",
+        "tablet": "40px-44px",
+        "mobile": "32px-36px",
+        "weight": "700-800",
+        "letter_spacing": "-0.02em"
+      },
+      "h2_section_title": {
+        "desktop": "36px-44px",
+        "tablet": "32px-36px",
+        "mobile": "28px-32px",
+        "weight": "600-700",
+        "letter_spacing": "-0.01em"
+      },
+      "h3_subsection": {
+        "desktop": "28px-32px",
+        "tablet": "24px-28px",
+        "mobile": "20px-24px",
+        "weight": "600-700"
+      },
+      "body_text": {
+        "desktop": "16px",
+        "tablet": "16px",
+        "mobile": "14px-16px",
+        "weight": "400-500",
+        "line_height": "1.6-1.8"
+      },
+      "code_text": {
+        "size": "13px-14px",
+        "weight": "400",
+        "line_height": "1.6",
+        "monospace": true
+      }
+    },
+    "web_font_loading": {
+      "strategy": "Optimal",
+      "critical_fonts": [
+        "SF Pro Display (heading) - load first",
+        "SF Pro Text (body) - load first"
+      ],
+      "secondary_fonts": [
+        "Code font - lazy load",
+        "Display fonts - variable font if possible"
+      ],
+      "fallback_order": [
+        "System fonts first (no network delay)",
+        "Variable fonts (reduced file size)",
+        "Subset loading (language-specific characters only)",
+        "Local font rendering (don't wait for network)"
+      ],
+      "performance": "Keep total font load under 100KB"
+    },
+    "font_mixing_rules": {
+      "contrast": "Combine serif + sans-serif or geometric + humanist for visual hierarchy",
+      "weight_contrast": "Heading weights 600-800, body weights 400-500",
+      "size_ratio": "Use 1.25x-1.5x size ratio between hierarchy levels",
+      "letter_spacing": "Decrease letter-spacing for large headings (-0.02em to -0.01em)",
+      "line_height": "1.6-1.8 for body text, 1.2-1.4 for headings",
+      "color_contrast": "Ensure WCAG AA minimum 4.5:1 for body text, 3:1 for large text"
+    },
+    "implementation_guide": {
+      "macos_first_approach": [
+        "Detect system font availability",
+        "Load SF Pro Display/Text by default on macOS",
+        "Fall back to web fonts on other systems",
+        "Minimize network requests"
+      ],
+      "font_faces_to_load": [
+        "@font-face for Playfair Display (heading backup)",
+        "@font-face for Inter (body backup)",
+        "@font-face for JetBrains Mono (code backup)",
+        "Use variable fonts when possible"
+      ],
+      "css_implementation": "Use font-display: swap to prevent FOIT (Flash of Invisible Text)"
+    },
+    "responsive_typography": {
+      "desktop": "Optimized for 20+ inch screens",
+      "tablet": "Scaled down 10-15% for 7-10 inch displays",
+      "mobile": "Scaled down 20-30%, optimized for touch and reading distance",
+      "approach": "Use CSS clamp() or media queries for smooth scaling"
+    },
+    "accessibility_requirements": {
+      "minimum_body_size": "16px on desktop, 14px+ on mobile",
+      "contrast_ratio": "4.5:1 minimum for normal text, 3:1 for large text",
+      "line_height": "Minimum 1.5 for body text",
+      "letter_spacing": "No less than 0.12em in justified text",
+      "font_weight": "Avoid weights below 400 for body text"
+    }
+  },
+  "seo_requirements": {
+    "required": true,
+    "must_include": [
+      "Per-page metadata",
+      "Open Graph tags",
+      "Twitter card tags",
+      "Structured headings",
+      "Semantic HTML",
+      "Sitemap",
+      "Robots configuration",
+      "Canonical tags",
+      "Schema markup where relevant"
+    ]
+  },
+  "accessibility_requirements": {
+    "required": true,
+    "must_include": [
+      "Keyboard navigability",
+      "Alt text for images",
+      "Visible focus states",
+      "Accessible contrast ratio",
+      "Semantic HTML",
+      "Reduced-motion consideration"
+    ]
+  },
+  "content_management_requirements": {
+    "supported_modes": [
+      "Local JSON content files",
+      "Headless CMS content",
+      "MDX content for articles and rich case studies"
+    ],
+    "content_models": [
+      "Products",
+      "Case studies",
+      "Blog posts",
+      "Testimonials",
+      "Site settings",
+      "Resume entries",
+      "Technology categories"
+    ]
+  },
+  "data_models": {
+    "product_model": {
+      "slug": "string",
+      "name": "string",
+      "category": "string",
+      "summary": "string",
+      "problem": "string",
+      "solution": "string",
+      "industry": "string",
+      "target_users": [
+        "string"
+      ],
+      "tech_stack": [
+        "string"
+      ],
+      "role": "string",
+      "status": "string",
+      "features": [
+        "string"
+      ],
+      "screenshots": [
+        "string"
+      ],
+      "metrics": [
+        "string"
+      ],
+      "links": {
+        "demo": "string",
+        "github": "string",
+        "case_study": "string"
+      }
+    },
+    "case_study_model": {
+      "slug": "string",
+      "project_name": "string",
+      "overview": "string",
+      "problem": "string",
+      "goals": [
+        "string"
+      ],
+      "users": [
+        "string"
+      ],
+      "requirements": [
+        "string"
+      ],
+      "architecture_summary": "string",
+      "tech_stack": [
+        "string"
+      ],
+      "challenges": [
+        "string"
+      ],
+      "solution": "string",
+      "results": [
+        "string"
+      ],
+      "lessons_learned": [
+        "string"
+      ],
+      "roadmap": [
+        "string"
+      ]
+    },
+    "blog_post_model": {
+      "slug": "string",
+      "title": "string",
+      "description": "string",
+      "published_at": "string",
+      "tags": [
+        "string"
+      ],
+      "category": "string",
+      "reading_time": "string",
+      "cover_image": "string",
+      "content_source": "mdx"
+    }
+  },
+  "conversion_requirements": {
+    "required": true,
+    "primary_ctas": [
+      "View Products",
+      "View Case Studies",
+      "Hire Me",
+      "Contact",
+      "Request Consultation"
+    ],
+    "conversion_goals": [
+      "Increase credibility",
+      "Generate opportunities",
+      "Show product depth",
+      "Convert visitors into serious leads"
+    ]
+  },
+  "content_quality_rules": {
+    "must_do": [
+      "Use outcome-driven language",
+      "Curate only strong projects",
+      "Show screenshots with context",
+      "Explain business value",
+      "Use precise technical language",
+      "Keep writing professional and grammatically correct"
+    ],
+    "must_not_do": [
+      "Show too many weak projects",
+      "Use vague self-praise",
+      "Make GitHub the whole portfolio",
+      "Use fake skill percentages",
+      "Overload the site with distracting effects",
+      "Expose confidential code or sensitive materials"
+    ]
+  },
+  "deployment_recommendations": {
+    "hosting": [
+      "Vercel",
+      "Netlify",
+      "Cloud platform with CDN"
+    ],
+    "performance_tools": [
+      "Image optimization",
+      "Code splitting",
+      "Lazy loading",
+      "Static asset compression",
+      "Caching headers"
+    ],
+    "analytics": [
+      "Page analytics",
+      "Conversion tracking",
+      "Click tracking for CTA performance"
+    ]
+  },
+  "future_enhancements": {
+    "possible_additions": [
+      "Admin dashboard for content management",
+      "Search across products and posts",
+      "Interactive architecture diagrams",
+      "Client inquiry pipeline integration",
+      "Newsletter integration",
+      "Multi-language support"
+    ]
+  },
+  "success_criteria": {
+    "portfolio_should_prove": [
+      "Clear professional identity",
+      "Visible product depth",
+      "Strong engineering quality",
+      "Business understanding",
+      "Trustworthiness",
+      "Readiness for production-grade work"
+    ]
+  },
+  "admin_dashboard": {
+    "enabled": true,
+    "authentication": {
+      "required": true,
+      "method": "JWT",
+      "role_based_access": true,
+      "roles": [
+        {
+          "name": "Admin",
+          "permissions": [
+            "manage_all_content",
+            "manage_site_settings",
+            "manage_users",
+            "view_analytics"
+          ]
+        },
+        {
+          "name": "Editor",
+          "permissions": [
+            "edit_products",
+            "edit_blog",
+            "edit_case_studies",
+            "edit_testimonials",
+            "edit_about"
+          ]
+        },
+        {
+          "name": "Viewer",
+          "permissions": [
+            "view_analytics",
+            "view_inquiries"
+          ]
+        }
+      ]
+    },
+    "protected_route": "/admin",
+    "dashboard_sections": [
+      {
+        "section": "Site Settings",
+        "description": "Manage global site configuration, branding, and metadata",
+        "editable_fields": [
+          {
+            "field": "site_title",
+            "type": "text",
+            "description": "Main site title"
+          },
+          {
+            "field": "site_description",
+            "type": "textarea",
+            "description": "Site meta description for SEO"
+          },
+          {
+            "field": "brand_name",
+            "type": "text",
+            "description": "Brand name displayed in header/footer"
+          },
+          {
+            "field": "brand_tagline",
+            "type": "text",
+            "description": "Short brand positioning statement"
+          },
+          {
+            "field": "logo_url",
+            "type": "file",
+            "description": "Brand logo image"
+          },
+          {
+            "field": "favicon_url",
+            "type": "file",
+            "description": "Browser tab favicon"
+          },
+          {
+            "field": "social_links",
+            "type": "object",
+            "fields": [
+              "github",
+              "linkedin",
+              "twitter",
+              "email",
+              "phone",
+              "calendly_url"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Design & Theme",
+        "description": "Customize colors, typography, animations, and layout",
+        "editable_fields": [
+          {
+            "field": "primary_color",
+            "type": "color",
+            "description": "Primary brand color"
+          },
+          {
+            "field": "secondary_color",
+            "type": "color",
+            "description": "Secondary brand color"
+          },
+          {
+            "field": "accent_color",
+            "type": "color",
+            "description": "Accent/highlight color"
+          },
+          {
+            "field": "background_color",
+            "type": "color",
+            "description": "Main background color"
+          },
+          {
+            "field": "text_color",
+            "type": "color",
+            "description": "Primary text color"
+          },
+          {
+            "field": "dark_mode_enabled",
+            "type": "toggle",
+            "description": "Enable dark mode support"
+          },
+          {
+            "field": "typography_system",
+            "type": "object",
+            "description": "Advanced font mixing strategy",
+            "subfields": [
+              {
+                "field": "heading_font",
+                "type": "select",
+                "description": "Font for titles and headings",
+                "options": [
+                  "SF Pro Display (macOS system font)",
+                  "San Francisco",
+                  "Playfair Display (elegant serif)",
+                  "Outfit (geometric, modern)",
+                  "Crimson Text (premium serif)",
+                  "Lora (readable serif)"
+                ]
+              },
+              {
+                "field": "body_font",
+                "type": "select",
+                "description": "Font for body text and paragraphs",
+                "options": [
+                  "-apple-system, SF Pro Text (macOS native)",
+                  "Inter (clean, modern, accessible)",
+                  "Lato (friendly, readable)",
+                  "Merriweather (serif, elegant)",
+                  "System Font Stack"
+                ]
+              },
+              {
+                "field": "code_font",
+                "type": "select",
+                "description": "Font for code and technical content",
+                "options": [
+                  "JetBrains Mono (professional)",
+                  "SF Mono (macOS system font)",
+                  "Menlo",
+                  "Monaco",
+                  "Courier New"
+                ]
+              },
+              {
+                "field": "font_pairing_preset",
+                "type": "select",
+                "description": "Pre-optimized font combinations",
+                "options": [
+                  "Premium Professional (SF Pro Display + Inter + JetBrains Mono)",
+                  "Elegant Studio (Playfair Display + Lato + SF Mono)",
+                  "Modern Clean (Outfit + Inter + JetBrains Mono)",
+                  "Premium Serif (Crimson Text + Merriweather + JetBrains Mono)",
+                  "macOS Native (SF Pro Display + SF Pro Text + SF Mono)",
+                  "Luxury Brand (Playfair Display + Crimson Text + Monaco)",
+                  "Tech Forward (Outfit + Inter + JetBrains Mono)"
+                ]
+              }
+            ]
+          },
+          {
+            "field": "animation_style",
+            "type": "select",
+            "options": [
+              "minimal",
+              "controlled",
+              "smooth",
+              "none"
+            ]
+          },
+          {
+            "field": "layout_spacing",
+            "type": "select",
+            "options": [
+              "compact",
+              "normal",
+              "spacious"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Hero Section",
+        "description": "Manage homepage hero content and CTAs",
+        "editable_fields": [
+          {
+            "field": "hero_headline",
+            "type": "text",
+            "description": "Main headline"
+          },
+          {
+            "field": "hero_subheadline",
+            "type": "textarea",
+            "description": "Subheadline with value proposition"
+          },
+          {
+            "field": "hero_background_image",
+            "type": "file",
+            "description": "Hero section background"
+          },
+          {
+            "field": "hero_cta_primary_text",
+            "type": "text",
+            "description": "Primary CTA button text"
+          },
+          {
+            "field": "hero_cta_primary_link",
+            "type": "text",
+            "description": "Primary CTA button link"
+          },
+          {
+            "field": "hero_cta_secondary_text",
+            "type": "text",
+            "description": "Secondary CTA button text"
+          },
+          {
+            "field": "hero_cta_secondary_link",
+            "type": "text",
+            "description": "Secondary CTA button link"
+          },
+          {
+            "field": "hero_visual_preview",
+            "type": "file",
+            "description": "Hero visual/mockup image"
+          }
+        ]
+      },
+      {
+        "section": "Navigation & Footer",
+        "description": "Customize header navigation and footer elements",
+        "editable_fields": [
+          {
+            "field": "nav_items",
+            "type": "array",
+            "description": "Navigation menu items",
+            "item_fields": [
+              "label",
+              "href",
+              "order"
+            ]
+          },
+          {
+            "field": "sticky_header",
+            "type": "toggle",
+            "description": "Keep header sticky on scroll"
+          },
+          {
+            "field": "footer_brand_summary",
+            "type": "textarea",
+            "description": "Footer brand/company summary"
+          },
+          {
+            "field": "footer_quick_links",
+            "type": "array",
+            "item_fields": [
+              "label",
+              "href"
+            ]
+          },
+          {
+            "field": "footer_contact_details",
+            "type": "object",
+            "fields": [
+              "email",
+              "phone",
+              "address"
+            ]
+          },
+          {
+            "field": "footer_copyright_text",
+            "type": "text",
+            "description": "Copyright notice"
+          },
+          {
+            "field": "newsletter_enabled",
+            "type": "toggle",
+            "description": "Enable newsletter signup in footer"
+          }
+        ]
+      },
+      {
+        "section": "Products",
+        "description": "Create, edit, and manage product portfolio items",
+        "actions": [
+          "Add new product",
+          "Edit product",
+          "Delete product",
+          "Reorder products",
+          "Set featured status",
+          "Bulk upload"
+        ],
+        "editable_fields": [
+          "product_name",
+          "product_type",
+          "short_summary",
+          "industry_domain",
+          "target_users",
+          "problem_solved",
+          "business_value",
+          "tech_stack",
+          "architecture_style",
+          "role_played",
+          "status",
+          "screenshots",
+          "key_features",
+          "metrics",
+          "case_study_link",
+          "live_demo_link",
+          "github_link",
+          "timeline",
+          "team_size",
+          "client_type"
+        ]
+      },
+      {
+        "section": "Case Studies",
+        "description": "Create detailed case studies for major projects",
+        "actions": [
+          "Create case study",
+          "Edit case study",
+          "Publish/Draft status",
+          "Preview",
+          "Delete"
+        ],
+        "editable_fields": [
+          "project_name",
+          "slug",
+          "overview",
+          "problem",
+          "goals",
+          "users",
+          "requirements",
+          "architecture_summary",
+          "architecture_diagram",
+          "tech_stack",
+          "challenges",
+          "solution",
+          "screenshots",
+          "results",
+          "metrics",
+          "lessons_learned",
+          "roadmap",
+          "timeline",
+          "role",
+          "team_size",
+          "links"
+        ]
+      },
+      {
+        "section": "Blog / Articles",
+        "description": "Manage blog posts and articles with MDX support",
+        "actions": [
+          "Create article",
+          "Edit article",
+          "Publish/Draft/Scheduled",
+          "Delete article",
+          "Preview",
+          "Schedule publication"
+        ],
+        "editable_fields": [
+          "title",
+          "slug",
+          "description",
+          "content",
+          "cover_image",
+          "category",
+          "tags",
+          "published_at",
+          "reading_time",
+          "author",
+          "seo_keywords"
+        ],
+        "features": [
+          "Rich text editor with MDX support",
+          "Image upload",
+          "Code highlighting",
+          "Auto reading time calculation",
+          "Category tagging",
+          "Related posts suggestions"
+        ]
+      },
+      {
+        "section": "Services",
+        "description": "Manage engineering services and capabilities",
+        "editable_fields": [
+          {
+            "field": "service_categories",
+            "type": "array",
+            "description": "Service offerings",
+            "item_fields": [
+              "name",
+              "description",
+              "icon",
+              "order"
+            ]
+          },
+          {
+            "field": "service_description",
+            "type": "textarea",
+            "description": "Intro text for services page"
+          }
+        ]
+      },
+      {
+        "section": "Engineering Standards",
+        "description": "Manage engineering quality, standards, and processes",
+        "editable_fields": [
+          "api_design_standards",
+          "database_design_standards",
+          "authentication_approach",
+          "testing_strategy",
+          "security_practices",
+          "logging_monitoring",
+          "scalability_planning",
+          "documentation_standards",
+          "deployment_standards",
+          "backup_recovery"
+        ]
+      },
+      {
+        "section": "About / Founder Profile",
+        "description": "Manage about page and founder profile content",
+        "editable_fields": [
+          {
+            "field": "founder_name",
+            "type": "text",
+            "description": "Your name"
+          },
+          {
+            "field": "professional_photo",
+            "type": "file",
+            "description": "Profile photo"
+          },
+          {
+            "field": "intro_text",
+            "type": "textarea",
+            "description": "Professional introduction"
+          },
+          {
+            "field": "engineering_philosophy",
+            "type": "textarea",
+            "description": "Your engineering philosophy"
+          },
+          {
+            "field": "domain_interests",
+            "type": "array",
+            "description": "Domain expertise areas"
+          },
+          {
+            "field": "working_style",
+            "type": "textarea",
+            "description": "How you work and your approach"
+          },
+          {
+            "field": "mission_statement",
+            "type": "textarea",
+            "description": "Personal/professional mission"
+          },
+          {
+            "field": "career_timeline_highlights",
+            "type": "array",
+            "item_fields": [
+              "year",
+              "achievement",
+              "description"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Resume / Experience",
+        "description": "Manage experience, education, and certifications",
+        "editable_fields": [
+          {
+            "field": "experience_entries",
+            "type": "array",
+            "item_fields": [
+              "company",
+              "title",
+              "start_date",
+              "end_date",
+              "description",
+              "achievements"
+            ]
+          },
+          {
+            "field": "education_entries",
+            "type": "array",
+            "item_fields": [
+              "institution",
+              "degree",
+              "field",
+              "graduation_year"
+            ]
+          },
+          {
+            "field": "certifications",
+            "type": "array",
+            "item_fields": [
+              "name",
+              "issuer",
+              "date",
+              "credential_url"
+            ]
+          },
+          {
+            "field": "cv_download_url",
+            "type": "file",
+            "description": "Downloadable CV/Resume PDF"
+          }
+        ]
+      },
+      {
+        "section": "Testimonials & Social Proof",
+        "description": "Manage testimonials, feedback, and trust signals",
+        "actions": [
+          "Add testimonial",
+          "Edit testimonial",
+          "Delete testimonial",
+          "Approve/Reject"
+        ],
+        "editable_fields": [
+          {
+            "field": "testimonials",
+            "type": "array",
+            "item_fields": [
+              "author_name",
+              "author_role",
+              "author_company",
+              "author_photo",
+              "testimonial_text",
+              "rating",
+              "date"
+            ]
+          },
+          {
+            "field": "metrics_display",
+            "type": "array",
+            "item_fields": [
+              "label",
+              "value",
+              "icon"
+            ]
+          },
+          {
+            "field": "organizations_worked_with",
+            "type": "array",
+            "item_fields": [
+              "name",
+              "logo"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Technology Stack",
+        "description": "Manage displayed technologies and skills",
+        "editable_fields": [
+          {
+            "field": "tech_categories",
+            "type": "object",
+            "description": "Organized technology groups",
+            "categories": [
+              "Languages",
+              "Frontend",
+              "Backend",
+              "Databases",
+              "Tooling",
+              "Mobile",
+              "DevOps"
+            ]
+          },
+          {
+            "field": "skill_levels",
+            "type": "object",
+            "description": "Proficiency levels",
+            "options": [
+              "Expert",
+              "Advanced",
+              "Intermediate",
+              "Familiar"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Contact & Inquiries",
+        "description": "Manage contact information and form inquiries",
+        "editable_fields": [
+          {
+            "field": "contact_email",
+            "type": "email",
+            "description": "Primary contact email"
+          },
+          {
+            "field": "availability_status",
+            "type": "select",
+            "options": [
+              "Available",
+              "Limited availability",
+              "Booked"
+            ]
+          },
+          {
+            "field": "project_inquiry_form_fields",
+            "type": "array",
+            "description": "Custom form fields for inquiries"
+          }
+        ],
+        "features": [
+          "View submitted inquiries",
+          "Filter by status",
+          "Reply to inquiries",
+          "Archive inquiries",
+          "Export inquiries"
+        ]
+      },
+      {
+        "section": "SEO & Metadata",
+        "description": "Manage SEO settings and page metadata",
+        "editable_fields": [
+          {
+            "field": "page_metadata",
+            "type": "array",
+            "item_fields": [
+              "page",
+              "meta_title",
+              "meta_description",
+              "og_image",
+              "canonical_url"
+            ]
+          },
+          {
+            "field": "sitemap_enabled",
+            "type": "toggle"
+          },
+          {
+            "field": "robots_txt_content",
+            "type": "textarea"
+          },
+          {
+            "field": "schema_markup",
+            "type": "textarea",
+            "description": "JSON-LD structured data"
+          }
+        ]
+      },
+      {
+        "section": "Feature Toggles",
+        "description": "Enable/disable features and sections",
+        "feature_toggles": [
+          {
+            "feature": "Blog section",
+            "default": true
+          },
+          {
+            "feature": "Testimonials section",
+            "default": true
+          },
+          {
+            "feature": "Open Source / Labs",
+            "default": false
+          },
+          {
+            "feature": "Architecture Library",
+            "default": false
+          },
+          {
+            "feature": "Newsletter signup",
+            "default": false
+          },
+          {
+            "feature": "Dark mode",
+            "default": true
+          },
+          {
+            "feature": "Analytics tracking",
+            "default": true
+          },
+          {
+            "feature": "Search functionality",
+            "default": true
+          },
+          {
+            "feature": "Related posts",
+            "default": true
+          },
+          {
+            "feature": "Social sharing",
+            "default": true
+          }
+        ]
+      },
+      {
+        "section": "Analytics & Tracking",
+        "description": "Manage analytics and conversion tracking",
+        "editable_fields": [
+          {
+            "field": "google_analytics_id",
+            "type": "text",
+            "description": "GA4 measurement ID"
+          },
+          {
+            "field": "google_search_console_id",
+            "type": "text",
+            "description": "Google Search Console verification"
+          },
+          {
+            "field": "conversion_tracking",
+            "type": "object",
+            "fields": [
+              "cta_clicks",
+              "inquiry_submissions",
+              "page_views",
+              "scroll_depth"
+            ]
+          }
+        ],
+        "view_analytics": [
+          "Page views",
+          "CTA performance",
+          "Inquiry conversion rate",
+          "Traffic sources",
+          "Device breakdown",
+          "Top referrers"
+        ]
+      },
+      {
+        "section": "Integrations",
+        "description": "Manage external service integrations",
+        "available_integrations": [
+          {
+            "name": "Email service",
+            "options": [
+              "SendGrid",
+              "Mailgun",
+              "AWS SES"
+            ]
+          },
+          {
+            "name": "CMS",
+            "options": [
+              "Contentful",
+              "Strapi",
+              "Sanity"
+            ]
+          },
+          {
+            "name": "Calendar booking",
+            "options": [
+              "Calendly",
+              "Acuity Scheduling"
+            ]
+          },
+          {
+            "name": "Form submission",
+            "options": [
+              "Formspree",
+              "Basin",
+              "Getform"
+            ]
+          }
+        ]
+      },
+      {
+        "section": "Content Management",
+        "description": "Import/export and bulk content operations",
+        "actions": [
+          {
+            "action": "Export content",
+            "formats": [
+              "JSON",
+              "CSV"
+            ]
+          },
+          {
+            "action": "Import content",
+            "formats": [
+              "JSON",
+              "CSV"
+            ]
+          },
+          {
+            "action": "Backup",
+            "description": "Create database backup"
+          },
+          {
+            "action": "Restore",
+            "description": "Restore from backup"
+          }
+        ]
+      },
+      {
+        "section": "User Management",
+        "description": "Manage admin users and permissions",
+        "actions": [
+          "Invite user",
+          "Edit user",
+          "Delete user",
+          "Change role",
+          "Reset password"
+        ],
+        "user_fields": [
+          "email",
+          "name",
+          "role",
+          "permissions",
+          "last_login",
+          "status"
+        ]
+      }
+    ],
+    "features": {
+      "real_time_preview": {
+        "enabled": true,
+        "description": "Live preview of changes before publishing"
+      },
+      "version_control": {
+        "enabled": true,
+        "description": "Track content changes and revisions"
+      },
+      "scheduled_publishing": {
+        "enabled": true,
+        "description": "Schedule content publication"
+      },
+      "content_approval_workflow": {
+        "enabled": true,
+        "description": "Multi-level approval before publishing"
+      },
+      "bulk_operations": {
+        "enabled": true,
+        "description": "Bulk edit, delete, or move content"
+      },
+      "search_and_filter": {
+        "enabled": true,
+        "description": "Advanced search across all content"
+      },
+      "activity_log": {
+        "enabled": true,
+        "description": "Track admin actions and changes"
+      },
+      "backup_and_restore": {
+        "enabled": true,
+        "description": "Automatic and manual backups"
+      }
+    },
+    "ui_components": {
+      "dashboard_cards": "Display key metrics and quick actions",
+      "data_tables": "Edit and manage list data",
+      "form_builders": "Create and edit structured content",
+      "code_editor": "MDX and code editing",
+      "media_library": "Organize and manage images/files",
+      "color_picker": "Visual color selection",
+      "date_time_picker": "Schedule content publication",
+      "rich_text_editor": "Advanced text formatting",
+      "modal_dialogs": "Confirmations and secondary actions",
+      "notifications": "System feedback and alerts"
+    },
+    "backend_requirements": {
+      "database": "Firebase/SQL with user authentication",
+      "api_endpoints": [
+        "GET/POST/PUT/DELETE /api/products",
+        "GET/POST/PUT/DELETE /api/case-studies",
+        "GET/POST/PUT/DELETE /api/blog-posts",
+        "GET/POST/PUT/DELETE /api/testimonials",
+        "GET/PUT /api/site-settings",
+        "GET/PUT /api/about",
+        "POST /api/contact-inquiries",
+        "GET/PUT /api/seo-metadata",
+        "GET /api/analytics",
+        "GET/POST /api/users"
+      ],
+      "authentication": "JWT with refresh tokens",
+      "rate_limiting": "Prevent abuse",
+      "validation": "Server-side input validation",
+      "file_upload": "Secure image/document handling"
+    },
+    "deployment": {
+      "hosting": "Vercel / Netlify with Edge Functions",
+      "database": "Firebase Firestore or Supabase",
+      "file_storage": "Firebase Storage or AWS S3",
+      "environment_variables": [
+        "DATABASE_URL",
+        "API_SECRET_KEY",
+        "ADMIN_JWT_SECRET",
+        "FILE_STORAGE_KEY"
+      ]
+    }
+  }
+}
