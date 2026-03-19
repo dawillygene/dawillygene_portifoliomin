@@ -83,6 +83,7 @@ export const COLLECTIONS = {
   TEAM: 'team',
   TESTIMONIALS: 'testimonials',
   CONTACT: 'contact',
+  CONTACT_INQUIRIES: 'contact_inquiries',
   COMPANY: 'company',
   NAV: 'navigation',
 } as const;
