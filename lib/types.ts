@@ -82,3 +82,18 @@ export interface PageContent {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ContactInquiry {
+  id: string;
+  fullName: string;
+  email: string;
+  organization?: string;
+  projectType: string;
+  budgetRange: string;
+  timeline: string;
+  message: string;
+  status: 'new' | 'reviewed' | 'archived';
+  source: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
