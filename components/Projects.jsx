@@ -81,7 +81,7 @@ const Projects = () => {
           </div>
           <h2 className="fade-in">Featured Projects</h2>
           <p className="fade-in">
-            A curated selection of production-grade applications I've designed, built, and shipped.
+            A curated selection of production-grade applications I&apos;ve designed, built, and shipped.
           </p>
         </div>
 
