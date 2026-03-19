@@ -57,7 +57,7 @@ export default function AdminLoginPage() {
       await login(email, password);
       router.push('/admin');
     } catch {
-      setError('Invalid email or password. Please try again.');
+      setError('Invalid email, password, or admin authorization. Please try again.');
     } finally {
       setLoading(false);
     }
