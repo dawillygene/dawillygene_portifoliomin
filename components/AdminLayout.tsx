@@ -80,11 +80,11 @@ const navItems = [
 export default function AdminLayout({ children, pageTitle }: { children: React.ReactNode; pageTitle?: string }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, loading, logout } = useAuth();
+  const { user, isAdmin, loading, logout } = useAuth();
 
   useEffect(() => {
-    if (!loading && !user) router.push('/admin/login');
-  }, [user, loading, router]);
+    if (!loading && (!user || !isAdmin)) router.push('/admin/login');
+  }, [user, isAdmin, loading, router]);
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: '#0a0a0f', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,.4)' }}>
@@ -92,7 +92,7 @@ export default function AdminLayout({ children, pageTitle }: { children: React.R
     </div>
   );
 
-  if (!user) return null;
+  if (!user || !isAdmin) return null;
 
   const isActive = (href: string, exact?: boolean) =>
     exact ? pathname === href : pathname.startsWith(href);
