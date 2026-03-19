@@ -73,7 +73,7 @@ const Testimonials = () => {
             Testimonials
           </div>
           <h2 className="fade-in">What People Say</h2>
-          <p className="fade-in">Trusted by educators, CEOs, and engineers who've seen my work firsthand.</p>
+          <p className="fade-in">Trusted by educators, CEOs, and engineers who&apos;ve seen my work firsthand.</p>
         </div>
 
         {/* Grid */}
@@ -101,13 +101,13 @@ const Testimonials = () => {
                   fontFamily: 'Georgia, serif',
                 }}
               >
-                "
+                &quot;
               </div>
 
               {renderStars(t.stars)}
 
               <p style={{ fontSize: '.88rem', color: 'var(--text-tertiary)', lineHeight: 1.7, marginBottom: '1.5rem', fontStyle: 'italic' }}>
-                "{t.text || t.content}"
+                &quot;{t.text || t.content}&quot;
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '.75rem' }}>
