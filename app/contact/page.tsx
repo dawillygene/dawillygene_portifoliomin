@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/Navbar';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import BackToTop from '@/components/BackToTop';
+import ContactSection from '@/components/site/ContactSection';
+import PageHero from '@/components/site/PageHero';
+import PageShell from '@/components/site/PageShell';
 
 export const metadata: Metadata = {
-  title: 'Contact | Genelabs Software Tz',
+  title: 'Contact',
+  description: 'Inquiry form and direct contact details for project work, hiring discussions, and technical collaboration.',
 };
 
 export default function ContactPage() {
   return (
-    <>
-      <Navbar />
-      <main style={{ background: '#0a0a0f', minHeight: '100vh', paddingTop: '5rem' }}>
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
-    </>
+    <PageShell>
+      <PageHero
+        eyebrow="Contact"
+        title="A clearer conversion path for inquiries, opportunities, and collaboration"
+        description="The contact experience now includes the fields specified in the requirements: full name, email, organization, project type, message, budget range, and timeline, alongside direct contact paths."
+      />
+      <ContactSection />
+    </PageShell>
   );
 }
