@@ -66,7 +66,7 @@ const SkillsScroll = () => (
           Expertise
         </div>
         <h2 className="fade-in">Skills & Proficiency</h2>
-        <p className="fade-in">Technologies I've mastered through years of building production-grade systems.</p>
+        <p className="fade-in">Technologies I&apos;ve mastered through years of building production-grade systems.</p>
       </div>
 
       {/* Grid */}
