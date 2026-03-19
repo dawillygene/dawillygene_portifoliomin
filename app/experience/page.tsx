@@ -12,7 +12,7 @@ export default function ExperiencePage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#0a0a0f', minHeight: '100vh', paddingTop: '5rem' }}>
+      <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', paddingTop: '5rem' }}>
         <Experience />
       </main>
       <Footer />
