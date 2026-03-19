@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
-import { getDocument, setDocument, COLLECTIONS } from '@/lib/firestore';
+import { getCollection, getDocument, setDocument, COLLECTIONS } from '@/lib/firestore';
+import type { ContactInquiry } from '@/lib/types';
 
 const CSS = `
   .admin-form { max-width:800px; }
@@ -28,6 +29,10 @@ const CSS = `
   .contact-preview { background:rgba(56,189,248,.04); border:1px solid rgba(56,189,248,.1); border-radius:12px; padding:1.2rem 1.5rem; margin-bottom:1.2rem; }
   .contact-preview-item { display:flex; align-items:center; gap:.75rem; padding:.4rem 0; font-size:.82rem; color:rgba(255,255,255,.5); }
   .contact-preview-item i { color:#38bdf8; width:16px; text-align:center; }
+  .inquiry-card { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:14px; padding:1rem 1.1rem; margin-bottom:1rem; }
+  .inquiry-meta { display:flex; flex-wrap:wrap; gap:.55rem; margin:.75rem 0; }
+  .inquiry-pill { font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; border-radius:999px; padding:.35rem .65rem; background:rgba(56,189,248,.08); color:#7dd3fc; border:1px solid rgba(56,189,248,.14); }
+  .inquiry-message { color:rgba(255,255,255,.68); font-size:.83rem; line-height:1.65; white-space:pre-wrap; }
 `;
 
 interface ContactData {
@@ -60,12 +65,16 @@ const defaults: ContactData = {
 
 export default function AdminContactPage() {
   const [data, setData] = useState<ContactData>(defaults);
+  const [inquiries, setInquiries] = useState<ContactInquiry[]>([]);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     getDocument<ContactData>(COLLECTIONS.CONTACT, 'main').then(d => {
       if (d) setData({ ...defaults, ...d, social: { ...defaults.social, ...d.social } });
+    });
+    getCollection<ContactInquiry>(COLLECTIONS.CONTACT_INQUIRIES).then((items) => {
+      setInquiries(items.reverse());
     });
   }, []);
 
@@ -145,6 +154,38 @@ export default function AdminContactPage() {
               <input className="admin-input" value={data.social?.youtube??''} onChange={e=>setSocial('youtube',e.target.value)} placeholder="https://youtube.com/@channel" />
             </div>
           </div>
+        </div>
+
+        <div className="admin-section">
+          <div className="admin-section-title"><i className="fas fa-inbox" /> Contact Inquiries</div>
+          {inquiries.length === 0 ? (
+            <div style={{ color:'rgba(255,255,255,.45)', fontSize:'.84rem' }}>
+              No inquiries have been submitted yet from the website form.
+            </div>
+          ) : (
+            inquiries.map((inquiry) => (
+              <div key={inquiry.id} className="inquiry-card">
+                <div style={{ display:'flex', justifyContent:'space-between', gap:'1rem', flexWrap:'wrap' }}>
+                  <div>
+                    <div style={{ fontWeight:700, color:'#e2e8f0', marginBottom:'.2rem' }}>{inquiry.fullName}</div>
+                    <div style={{ fontSize:'.8rem', color:'rgba(255,255,255,.52)' }}>
+                      {inquiry.email}{inquiry.organization ? ` • ${inquiry.organization}` : ''}
+                    </div>
+                  </div>
+                  <a href={`mailto:${inquiry.email}`} style={{ color:'#7dd3fc', fontSize:'.8rem', textDecoration:'none' }}>
+                    Reply
+                  </a>
+                </div>
+                <div className="inquiry-meta">
+                  <span className="inquiry-pill">{inquiry.projectType}</span>
+                  <span className="inquiry-pill">{inquiry.budgetRange}</span>
+                  <span className="inquiry-pill">{inquiry.timeline}</span>
+                  <span className="inquiry-pill">{inquiry.status}</span>
+                </div>
+                <div className="inquiry-message">{inquiry.message}</div>
+              </div>
+            ))
+          )}
         </div>
 
         <button className="admin-btn admin-btn-primary" onClick={handleSave} disabled={saving} style={{ minWidth:160 }}>
