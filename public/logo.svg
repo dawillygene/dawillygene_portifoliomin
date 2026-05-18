@@ -1,0 +1,49 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#244D64"/>
+      <stop offset="1" stop-color="#0F2D41"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="120" y1="84" x2="336" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9E8A7"/>
+      <stop offset="0.45" stop-color="#D6B45C"/>
+      <stop offset="1" stop-color="#8E6A1B"/>
+    </linearGradient>
+    <filter id="shadow" x="86" y="62" width="270" height="325" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dx="8" dy="12"/>
+      <feGaussianBlur stdDeviation="8"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0313725 0 0 0 0 0.0588235 0 0 0 0 0.0941176 0 0 0 0.35 0"/>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="216" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="216" stroke="#2B5A74" stroke-width="4"/>
+
+  <g filter="url(#shadow)">
+    <path d="M170 105C192 105 216 105 239 105V129H206L237 160V196L170 129V105Z" fill="url(#gold)"/>
+    <path d="M246 105H288C321 105 348 132 348 165V208H324V165C324 145 308 129 288 129H270L301 160V200L246 145V105Z" fill="url(#gold)"/>
+    <path d="M202 146L226 170V298L201 323V349H177V314L202 289V146Z" fill="url(#gold)"/>
+    <path d="M246 154L270 178V267L246 291V339H222V281L246 257V154Z" fill="url(#gold)"/>
+    <path d="M290 146L314 170V242L290 266V320H266V256L290 232V146Z" fill="url(#gold)"/>
+    <path d="M170 146L194 170V238L170 262V286H146V252L170 228V146Z" fill="url(#gold)"/>
+    <path d="M314 146L338 170V228L314 252V286H290V242L314 218V146Z" fill="url(#gold)"/>
+
+    <circle cx="158" cy="309" r="17" fill="url(#gold)"/>
+    <circle cx="234" cy="351" r="17" fill="url(#gold)"/>
+    <circle cx="302" cy="332" r="17" fill="url(#gold)"/>
+    <circle cx="331" cy="266" r="13" fill="url(#gold)"/>
+    <circle cx="183" cy="285" r="13" fill="url(#gold)"/>
+    <circle cx="278" cy="132" r="12" fill="url(#gold)"/>
+  </g>
+
+  <path d="M112 384L144 360L163 382L206 382L224 396H165L149 376L121 392L112 384Z" fill="url(#gold)"/>
+  <path d="M263 381H329L346 364L401 364L419 383L404 394L390 382H353L336 399H263V381Z" fill="url(#gold)"/>
+  <path d="M109 287C123 287 132 295 138 308C141 316 142 327 145 335L134 339C127 329 124 318 121 308C119 300 116 293 109 287Z" fill="url(#gold)"/>
+
+  <text x="154" y="419" fill="url(#gold)" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" text-anchor="middle">
+    Dawilly
+  </text>
+  <text x="348" y="419" fill="url(#gold)" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" text-anchor="middle">
+    Gene
+  </text>
+</svg>
