@@ -17,7 +17,7 @@ import {
   trustSignals,
 } from '@/lib/siteContent';
 
-const featuredProducts = products.filter((product) => product.category === 'Featured Products').slice(0, 3);
+const featuredProducts = products.filter((product) => product.featured).slice(0, 3);
 
 export default function HomeExperience() {
   return (
