@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/site/PageHero';
@@ -64,6 +65,31 @@ export default async function ProductCaseStudyPage({ params }: ProductCaseStudyP
       />
 
       <div className="container" style={{ paddingBottom: '5rem' }}>
+        <section className="product-case-study-hero-card glass-card">
+          <div className="product-case-study-media">
+            <Image src={product.image} alt={product.imageAlt} width={960} height={960} className="product-case-study-image" priority />
+          </div>
+          <div className="product-case-study-summary">
+            <div className="section-badge">Product Snapshot</div>
+            <h2 style={{ fontSize: '1.6rem', marginBottom: '0.75rem' }}>{product.name}</h2>
+            <p style={{ marginBottom: '1rem' }}>{product.shortSummary}</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
+              {product.platforms.map((item) => (
+                <span key={item} className="tag">
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              {product.links.map((link) => (
+                <a key={link.href} href={link.href} className="btn-secondary" target="_blank" rel="noreferrer">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="feature-grid" style={{ marginBottom: '2rem' }}>
           <article className="glass-card product-card">
             <h2 style={{ fontSize: '1.3rem', marginBottom: '0.75rem' }}>Project Overview</h2>
@@ -90,7 +116,7 @@ export default async function ProductCaseStudyPage({ params }: ProductCaseStudyP
               </div>
               <div>
                 <strong>Links</strong>
-                <span>{product.liveDemoLink ? 'Live product available' : 'Private / internal'}</span>
+                <span>{product.links.length > 0 ? `${product.links.length} public link(s)` : 'Private / internal'}</span>
               </div>
             </div>
           </article>
@@ -152,7 +178,9 @@ export default async function ProductCaseStudyPage({ params }: ProductCaseStudyP
             </article>
             <article className="glass-card product-card">
               <h3 style={{ marginBottom: '0.75rem' }}>Screenshots / Gallery</h3>
-              <ul className="clean-list">
+              <p style={{ marginBottom: '0.85rem' }}>Primary portfolio visual for this product.</p>
+              <Image src={product.image} alt={product.imageAlt} width={720} height={720} className="product-gallery-preview" />
+              <ul className="clean-list" style={{ marginTop: '1rem' }}>
                 {product.screenshots.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -190,4 +218,3 @@ export default async function ProductCaseStudyPage({ params }: ProductCaseStudyP
     </PageShell>
   );
 }
-
