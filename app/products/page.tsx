@@ -6,7 +6,7 @@ import { products } from '@/lib/siteContent';
 
 export const metadata: Metadata = {
   title: 'Products',
-  description: 'Featured products, supporting systems, and R&D concepts presented with business value, architecture signals, and direct case study access.',
+  description: 'A visual portfolio of real products across commerce, mobility, logistics, membership services, and internal operations systems.',
 };
 
 export default function ProductsPage() {
@@ -14,23 +14,23 @@ export default function ProductsPage() {
     <PageShell>
       <PageHero
         eyebrow="Products"
-        title="A categorized product portfolio with case studies, filters, and delivery signals"
-        description="This page turns the old project listing into a product-led portfolio with featured systems, archive work, and R&D concepts organized the way serious stakeholders evaluate engineering depth."
-        primaryCta={{ label: 'Explore Case Studies', href: '/products/sheria-kiganjani' }}
+        title="Products built across mobile commerce, local services, logistics, and organization platforms"
+        description="A redesigned product portfolio focused on Soko Mtaani, LeoTap, ZANEMA, Salum Transports, RAKIASA, and the supporting operations systems behind them."
+        primaryCta={{ label: 'Explore Soko Mtaani', href: '/products/soko-mtaani' }}
         secondaryCta={{ label: 'Contact', href: '/contact' }}
         aside={
           <div className="preview-stack">
             <div className="preview-panel">
-              <strong>Featured Products</strong>
-              <p>Higher-value systems with the clearest mix of technical depth and business framing.</p>
+              <strong>Real Product Mix</strong>
+              <p>Consumer apps, business websites, and internal operations portals presented in one portfolio.</p>
             </div>
             <div className="preview-panel">
-              <strong>Product Archive</strong>
-              <p>Supporting and earlier work with useful operational credibility.</p>
+              <strong>Store and Web Links</strong>
+              <p>Products now surface direct website and app-store references where public links exist.</p>
             </div>
             <div className="preview-panel">
-              <strong>R&amp;D Concepts</strong>
-              <p>Labs, blueprints, and reusable engineering ideas under exploration.</p>
+              <strong>Visual Portfolio</strong>
+              <p>The page uses product imagery throughout so visitors can scan the work faster.</p>
             </div>
           </div>
         }
@@ -39,4 +39,3 @@ export default function ProductsPage() {
     </PageShell>
   );
 }
-
