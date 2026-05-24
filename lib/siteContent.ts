@@ -413,6 +413,72 @@ export const products: ProductRecord[] = [
     ],
   },
   {
+    slug: 'sms-clone',
+    name: 'SMS Clone',
+    type: 'Android forensic acquisition and AI dataset preparation tool',
+    category: 'Featured Products',
+    featured: true,
+    shortSummary:
+      'A specialized Android application that extracts SMS and broader device artifacts into structured forensic datasets for LLM training, evidence handling, and longitudinal change tracking.',
+    industryDomain: 'Forensics / AI Data Tooling',
+    targetUsers: ['Developers', 'Researchers', 'Digital forensics analysts', 'OSINT teams', 'AI dataset builders'],
+    problemSolved:
+      'Teams preparing personal communication datasets or mobile evidence often need more than raw exports: they need clean threading, integrity verification, recoverability signals, and structured packaging.',
+    businessValue:
+      'Turns fragmented mobile records into reusable JSON datasets and forensic artifacts, reducing manual preprocessing while improving traceability, auditability, and evidence quality.',
+    techStack: ['Kotlin', 'Kotlin Coroutines', 'WorkManager', 'Room', 'Material 3', 'Gson', 'SAF', 'SHA-256 hashing'],
+    architectureStyle: 'Android forensic pipeline with acquisition services, shadow-mirror change tracking, structured export packaging, and background sync automation',
+    rolePlayed: 'Product architect, Android engineer, and forensic workflow designer',
+    status: 'Production',
+    year: 2026,
+    screenshots: ['SMS monitoring notification', 'Manual SMS export screen', 'Forensic export report'],
+    keyFeatures: [
+      'Forensic acquisition engine',
+      'SMS safety net for inserts, updates, and deletions',
+      'Intelligent threading by contact and thread ID',
+      'EXIF metadata extraction',
+      'SHA-256 integrity manifests',
+      'HTML forensic reporting',
+      'ZIP evidence packaging',
+      'Daily WorkManager auto-backup',
+    ],
+    metrics: [
+      'Public GitHub repository',
+      'Supports SMS plus call logs, contacts, calendar events, browser history, and app usage artifacts',
+      'Includes root-aware SQLite recovery hooks for deleted record recovery',
+      'Exports JSON, JSONL, HTML reports, and compressed evidence bundles',
+    ],
+    timeline: 'Android product build focused on acquisition, monitoring, packaging, and repeatable dataset generation',
+    teamSize: 'Solo product and engineering delivery',
+    clientType: 'Open-source Android utility',
+    image: '/sms-clone.svg',
+    imageAlt: 'SMS Clone portfolio graphic showing Android forensic export, integrity, and AI dataset workflows',
+    platforms: ['Android', 'Kotlin', 'SQLite', 'JSON'],
+    links: [{ label: 'GitHub', href: 'https://github.com/dawillygene/SMS-FINE-TUNING' }],
+    liveDemoLink: 'https://github.com/dawillygene/SMS-FINE-TUNING',
+    githubLink: 'https://github.com/dawillygene/SMS-FINE-TUNING',
+    caseStudySections: [
+      {
+        title: 'Overview',
+        body: 'SMS Clone is designed to bridge mobile communication data and AI dataset preparation by extracting conversations and related artifacts into structured, portable forensic outputs.',
+      },
+      {
+        title: 'What It Solves',
+        body: 'The product groups fragmented SMS records into chronological, contact-specific threads while preserving operational signals around changes, integrity, and packaging.',
+        bullets: ['Conversation-ready JSON output', 'Deleted-message safety net via realtime change logging', 'Cleaner training data for fine-tuning and analysis'],
+      },
+      {
+        title: 'Forensic Depth',
+        body: 'Beyond SMS, the app captures supporting mobile evidence such as call logs, contacts, calendar data, browser history, app usage, and media EXIF metadata.',
+        bullets: ['SHA-256 hash generation for extracted artifacts', 'High-quality HTML forensic reports', 'Single ZIP evidence container for handoff'],
+      },
+      {
+        title: 'Technical Direction',
+        body: 'The implementation is centered on Kotlin, WorkManager, Room shadow mirroring, and Android storage APIs so the export pipeline can run safely in the foreground or on scheduled daily syncs.',
+      },
+    ],
+  },
+  {
     slug: 'salum-transports',
     name: 'Salum Transports',
     type: 'Logistics and transport company website',
@@ -642,6 +708,14 @@ export const services = [
 ];
 
 export const repositories: RepositoryRecord[] = [
+  {
+    name: 'SMS-FINE-TUNING',
+    href: 'https://github.com/dawillygene/SMS-FINE-TUNING',
+    category: 'Open Source / Android Forensics',
+    summary: 'Android forensic acquisition tool for exporting SMS conversations and broader device artifacts into structured datasets suitable for analysis, evidence packaging, and LLM fine-tuning workflows.',
+    qualitySignals: ['Multi-artifact extraction scope', 'Integrity hashing and custody awareness', 'Background sync and change tracking', 'Structured export pipeline for AI-ready data'],
+    stack: ['Kotlin', 'Android', 'Room', 'WorkManager'],
+  },
   {
     name: 'dawillygene',
     href: 'https://github.com/dawillygene',
