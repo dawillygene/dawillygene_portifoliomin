@@ -1,0 +1,37 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" rx="72" fill="#071B22"/>
+  <rect x="48" y="48" width="1104" height="1104" rx="48" fill="url(#bg)"/>
+  <circle cx="942" cy="260" r="154" fill="#0B3948" fill-opacity="0.65"/>
+  <circle cx="250" cy="940" r="210" fill="#0F766E" fill-opacity="0.28"/>
+  <rect x="116" y="142" width="968" height="916" rx="40" fill="#08131A" fill-opacity="0.84" stroke="#175E63" stroke-width="2"/>
+  <text x="152" y="248" fill="#8EEAE2" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">SMS Clone</text>
+  <text x="152" y="306" fill="#B8D8D8" font-family="Arial, Helvetica, sans-serif" font-size="30">Android forensic export and AI dataset preparation</text>
+
+  <rect x="152" y="364" width="410" height="304" rx="28" fill="#0D232D" stroke="#1B4D59" stroke-width="2"/>
+  <rect x="186" y="404" width="146" height="34" rx="17" fill="#0F766E"/>
+  <text x="206" y="428" fill="#E7FFFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">ACQUISITION</text>
+  <rect x="186" y="472" width="340" height="20" rx="10" fill="#18414C"/>
+  <rect x="186" y="510" width="280" height="20" rx="10" fill="#18414C"/>
+  <rect x="186" y="548" width="310" height="20" rx="10" fill="#18414C"/>
+  <text x="186" y="610" fill="#A4C6C8" font-family="Arial, Helvetica, sans-serif" font-size="24">SMS, calls, contacts, EXIF, app usage</text>
+
+  <rect x="638" y="364" width="410" height="304" rx="28" fill="#0D232D" stroke="#1B4D59" stroke-width="2"/>
+  <rect x="672" y="404" width="130" height="34" rx="17" fill="#0E7490"/>
+  <text x="696" y="428" fill="#EAFBFF" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">INTEGRITY</text>
+  <path d="M748 522L808 462L928 582" stroke="#8EEAE2" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="672" y="602" width="260" height="20" rx="10" fill="#18414C"/>
+  <text x="672" y="648" fill="#A4C6C8" font-family="Arial, Helvetica, sans-serif" font-size="24">SHA-256 hashes and custody trail</text>
+
+  <rect x="152" y="730" width="896" height="246" rx="28" fill="#0D232D" stroke="#1B4D59" stroke-width="2"/>
+  <rect x="186" y="770" width="180" height="34" rx="17" fill="#164E63"/>
+  <text x="213" y="794" fill="#F2FBFF" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">DATASET OUTPUT</text>
+  <text x="186" y="854" fill="#F4FFFE" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">JSON • JSONL • HTML REPORT • ZIP</text>
+  <text x="186" y="914" fill="#A4C6C8" font-family="Arial, Helvetica, sans-serif" font-size="28">Threaded conversations, change logs, and packaged evidence bundles</text>
+
+  <defs>
+    <linearGradient id="bg" x1="96" y1="72" x2="1092" y2="1116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E2B36"/>
+      <stop offset="1" stop-color="#082028"/>
+    </linearGradient>
+  </defs>
+</svg>
