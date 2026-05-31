@@ -51,7 +51,7 @@ const Contact = () => {
           <div className="fade-in">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
               {[
-                { icon: 'fa-solid fa-envelope', label: 'Email', value: 'contact@dawillygene.com', href: 'mailto:contact@dawillygene.com' },
+                { icon: 'fa-solid fa-envelope', label: 'Email', value: 'dawillygene@gmail.com', href: 'mailto:dawillygene@gmail.com' },
                 { icon: 'fa-solid fa-phone', label: 'Phone / WhatsApp', value: '+255 753 225 961', href: 'tel:+255753225961' },
                 { icon: 'fa-solid fa-location-dot', label: 'Location', value: 'Dodoma, Tanzania' },
                 { icon: 'fa-solid fa-circle-check', label: 'Availability', value: 'Open to freelance & full-time' },
@@ -140,7 +140,7 @@ const Contact = () => {
                   <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                Your email client should have opened. If not, email me directly at contact@dawillygene.com
+                Your email client should have opened. If not, email me directly at dawillygene@gmail.com
               </div>
             )}
             <form onSubmit={handleSubmit}>
