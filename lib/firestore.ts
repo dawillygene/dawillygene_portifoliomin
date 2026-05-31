@@ -7,11 +7,7 @@ import {
   updateDoc,
   deleteDoc,
   setDoc,
-  query,
-  orderBy,
-  where,
   serverTimestamp,
-  Timestamp,
 } from 'firebase/firestore';
 import {
   ref,
@@ -22,15 +18,26 @@ import {
 import { db, storage } from '@/lib/firebase';
 
 // ── Generic helpers ──────────────────────────────────────────────
+// All read operations fail silently and return empty/null so that
+// components fall back to static data from siteContent.ts when
+// Firestore is not provisioned.
 
 export async function getCollection<T>(col: string): Promise<T[]> {
-  const snap = await getDocs(collection(db, col));
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() } as T));
+  try {
+    const snap = await getDocs(collection(db, col));
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() } as T));
+  } catch {
+    return [];
+  }
 }
 
 export async function getDocument<T>(col: string, id: string): Promise<T | null> {
-  const snap = await getDoc(doc(db, col, id));
-  return snap.exists() ? ({ id: snap.id, ...snap.data() } as T) : null;
+  try {
+    const snap = await getDoc(doc(db, col, id));
+    return snap.exists() ? ({ id: snap.id, ...snap.data() } as T) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function addDocument(col: string, data: object) {
