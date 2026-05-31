@@ -53,7 +53,7 @@ const defaultCompanyInfo: CompanyInfo = {
   description:
     'Genelabs Software Tz is a software development company under Dawilly Gene, specializing in Web Development, Mobile Applications, and IoT solutions.',
   established: 2024,
-  email: 'contact@dawillygene.com',
+  email: 'dawillygene@gmail.com',
   website: 'dawillygene.com',
   social: {
     github: 'dawillygene',
