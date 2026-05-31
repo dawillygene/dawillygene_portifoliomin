@@ -18,7 +18,7 @@
 
 ## Contact & Location
 
-- **Email**: contact@dawillygene.com
+- **Email**: dawillygene@gmail.com
 - **Phone / WhatsApp**: +255 753 225 961
 - **Location**: Dodoma, Tanzania
 - **Availability**: Open to freelance & full-time engagements
@@ -156,7 +156,7 @@
 - **Founder**: Dawilly Gene (Elia William Mariki)
 - **Established**: 2024
 - **Website**: dawillygene.com
-- **Email**: contact@dawillygene.com
+- **Email**: dawillygene@gmail.com
 - **Location**: Dodoma, Tanzania
 - **GitHub**: https://github.com/dawillygene
 - **LinkedIn**: https://www.linkedin.com/in/elia-william-mariki/
