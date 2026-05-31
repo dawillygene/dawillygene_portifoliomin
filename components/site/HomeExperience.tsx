@@ -17,6 +17,10 @@ import {
   trustSignals,
 } from '@/lib/siteContent';
 
+import TechStackSelector from '@/components/TechStackSelector';
+import ArchitectureVisualizer from '@/components/ArchitectureVisualizer';
+import EngagementProcess from '@/components/EngagementProcess';
+
 const featuredProducts = products.filter((product) => product.featured).slice(0, 3);
 
 export default function HomeExperience() {
@@ -133,6 +137,12 @@ export default function HomeExperience() {
         </div>
       </section>
 
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <TechStackSelector />
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <div className="section-header">
@@ -158,7 +168,13 @@ export default function HomeExperience() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--bg-secondary)' }}>
+      <section className="section">
+        <div className="container">
+          <ArchitectureVisualizer />
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg-secondary)', paddingTop: '4rem' }}>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">Advanced Company Sections</div>
@@ -216,6 +232,17 @@ export default function HomeExperience() {
               </ul>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-secondary)', borderBottom: '1px solid var(--border-secondary)' }}>
+        <div className="container">
+          <div className="section-header">
+            <div className="section-badge">How I Work</div>
+            <h2>Seamless, Modular Engineering Process</h2>
+            <p>From initial scoping call to private sandbox tests and verified cloud deployment—every phase is thoroughly structured.</p>
+          </div>
+          <EngagementProcess />
         </div>
       </section>
 
