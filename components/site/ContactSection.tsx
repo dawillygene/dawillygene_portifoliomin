@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { addDocument, COLLECTIONS } from '@/lib/firestore';
 import {
   companyProfile,
   contactBudgetRanges,
+  contactCountries,
   contactProjectTypes,
   contactTimelineRanges,
 } from '@/lib/siteContent';
@@ -12,7 +12,9 @@ import {
 export default function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [currency, setCurrency] = useState<'TZS' | 'USD'>('TZS');
+
+  const budgetOptions = contactBudgetRanges[currency];
 
   return (
     <div className="container" style={{ paddingBottom: '5rem' }}>
@@ -55,37 +57,67 @@ export default function ContactSection() {
         </div>
 
         <div className="glass-card" style={{ padding: '2rem' }}>
-          <div className="section-badge">Inquiry Form</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            <div className="section-badge" style={{ margin: 0 }}>Inquiry Form</div>
+            <span style={{
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              color: '#25D366',
+              background: 'rgba(37, 211, 102, 0.1)',
+              padding: '3px 10px',
+              borderRadius: 'var(--radius-sm)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+            }}>
+              <i className="fab fa-whatsapp" style={{ fontSize: '0.8rem' }} />
+              Sends via WhatsApp
+            </span>
+          </div>
           <form
             className="site-form-grid"
-            onSubmit={async (event) => {
+            onSubmit={(event) => {
               event.preventDefault();
-              setError('');
-              setSubmitted(false);
               setSubmitting(true);
 
               const form = event.currentTarget;
               const formData = new FormData(form);
 
-              try {
-                await addDocument(COLLECTIONS.CONTACT_INQUIRIES, {
-                  fullName: String(formData.get('fullName') || ''),
-                  email: String(formData.get('email') || ''),
-                  organization: String(formData.get('organization') || ''),
-                  projectType: String(formData.get('projectType') || ''),
-                  budgetRange: String(formData.get('budgetRange') || ''),
-                  timeline: String(formData.get('timeline') || ''),
-                  message: String(formData.get('message') || ''),
-                  status: 'new',
-                  source: 'website-contact-form',
-                });
-                form.reset();
-                setSubmitted(true);
-              } catch {
-                setError('The inquiry could not be submitted right now. Please use the direct email option and try again later.');
-              } finally {
-                setSubmitting(false);
-              }
+              const fullName = String(formData.get('fullName') || '');
+              const email = String(formData.get('email') || '');
+              const organization = String(formData.get('organization') || '');
+              const country = String(formData.get('country') || '');
+              const projectType = String(formData.get('projectType') || '');
+              const budgetRange = String(formData.get('budgetRange') || '');
+              const timeline = String(formData.get('timeline') || '');
+              const message = String(formData.get('message') || '');
+
+              // Build WhatsApp message
+              const waMessage = [
+                `--- *New Project Inquiry* ---`,
+                ``,
+                `*Name:* ${fullName}`,
+                `*Email:* ${email}`,
+                organization ? `*Organization:* ${organization}` : '',
+                `*Country:* ${country}`,
+                `*Project Type:* ${projectType}`,
+                `*Budget (${currency}):* ${budgetRange}`,
+                `*Timeline:* ${timeline}`,
+                ``,
+                `*Message:*`,
+                message,
+                ``,
+                `-- Sent from dawillygene.com`,
+              ].filter(Boolean).join('\n');
+
+              // Open WhatsApp with the formatted message
+              const whatsappUrl = `https://wa.me/255753225961?text=${encodeURIComponent(waMessage)}`;
+              window.open(whatsappUrl, '_blank');
+
+              form.reset();
+              setCurrency('TZS');
+              setSubmitted(true);
+              setSubmitting(false);
             }}
           >
             <label className="field-label">
@@ -101,6 +133,24 @@ export default function ContactSection() {
               <input className="site-input" type="text" name="organization" />
             </label>
             <label className="field-label">
+              <span>Country</span>
+              <select
+                className="site-select"
+                name="country"
+                defaultValue="Tanzania"
+                onChange={(e) => {
+                  const eastAfrican = ['Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'Burundi', 'Mozambique', 'DRC'];
+                  setCurrency(eastAfrican.includes(e.target.value) ? 'TZS' : 'USD');
+                }}
+              >
+                {contactCountries.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="field-label">
               <span>Project type</span>
               <select className="site-select" name="projectType" defaultValue={contactProjectTypes[0]}>
                 {contactProjectTypes.map((option) => (
@@ -111,9 +161,23 @@ export default function ContactSection() {
               </select>
             </label>
             <label className="field-label">
-              <span>Budget range</span>
-              <select className="site-select" name="budgetRange" defaultValue={contactBudgetRanges[0]}>
-                {contactBudgetRanges.map((option) => (
+              <span>
+                Budget range
+                <span style={{
+                  marginLeft: '0.5rem',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  color: 'var(--accent-text)',
+                  background: 'var(--accent-light)',
+                  padding: '2px 8px',
+                  borderRadius: 'var(--radius-sm)',
+                  verticalAlign: 'middle',
+                }}>
+                  {currency}
+                </span>
+              </span>
+              <select className="site-select" name="budgetRange" defaultValue={budgetOptions[0]} key={currency}>
+                {budgetOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
                   </option>
@@ -142,15 +206,14 @@ export default function ContactSection() {
             </label>
 
             <div className="full-span" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <button className="btn-primary" type="submit" disabled={submitting}>
-                {submitting ? 'Sending...' : 'Send Inquiry'}
+              <button className="btn-primary" type="submit" disabled={submitting} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                <i className="fab fa-whatsapp" style={{ fontSize: '1.1rem' }} />
+                {submitting ? 'Opening WhatsApp...' : 'Send via WhatsApp'}
               </button>
               {submitted ? (
-                <p style={{ color: 'var(--success)', fontWeight: 600 }}>
-                  Thanks. Your inquiry has been saved successfully and can now be reviewed from the admin dashboard.
+                <p style={{ color: 'var(--success)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <i className="fa-solid fa-circle-check" /> WhatsApp should have opened with your inquiry. If not, message me directly at +255 753 225 961.
                 </p>
-              ) : error ? (
-                <p style={{ color: 'var(--error)', fontWeight: 600 }}>{error}</p>
               ) : (
                 <p style={{ color: 'var(--text-quaternary)' }}>
                   Direct email and social links remain available if you prefer a faster route.
