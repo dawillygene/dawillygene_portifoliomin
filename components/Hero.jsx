@@ -785,9 +785,9 @@ const DEFAULT_CONTENT = {
   primaryCta: { label: 'Discuss a Project', href: '#contact' },
   secondaryCta: { label: 'View Architecture Work', href: '#projects' },
   metrics: [
-    { value: '5+', label: 'Years Engineering' },
-    { value: '30+', label: 'Systems Deployed' },
-    { value: '99.9%', label: 'Uptime Delivered' },
+    { value: '8+', label: 'Products Shipped' },
+    { value: '26', label: 'GitHub Repos' },
+    { value: '5', label: 'Industries Served' },
   ],
 };
 
