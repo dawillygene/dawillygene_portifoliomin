@@ -108,10 +108,10 @@ export const primaryNavigation = [
 ];
 
 export const trustSignals = [
-  { label: 'Products designed for real operations', value: '8+' },
-  { label: 'Core stacks used across delivery', value: '10+' },
-  { label: 'Industries addressed', value: '5' },
-  { label: 'Delivery focus', value: 'Security, scale, clarity' },
+  { label: 'Live products on Play Store & App Store', value: '4' },
+  { label: 'Client websites delivered', value: '3+' },
+  { label: 'Open-source packages published', value: '2' },
+  { label: 'Industries served', value: '5' },
 ];
 
 export const executiveSummary = [
@@ -180,13 +180,18 @@ export const documentationAndHandover = [
 export const featuredTestimonials = [
   {
     quote:
-      'He approaches software like a systems thinker, not just a coder. The result is software that feels ready for real operations.',
-    author: 'Technical collaborator',
+      'Dawilly is a highly skilled developer whose tech expertise supports operational efficiency at Salum Transport and Salum Construction. His solutions are practical and impactful.',
+    author: 'Fatma Masimba — CEO, Salum Transport Limited & Salum Construction',
   },
   {
     quote:
-      'Strong attention to structure, documentation, and delivery quality. The handover quality stood out as much as the implementation itself.',
-    author: 'Project stakeholder',
+      'Dawilly consistently demonstrated outstanding technical skills and dedication in software engineering. His problem-solving ability is impressive and he quickly adapts to new challenges.',
+    author: 'Rorland Horombo — Lecturer, Arusha Technical College',
+  },
+  {
+    quote:
+      'Dawilly\'s interdisciplinary knowledge and innovative mindset have been key in advancing biomedical projects at Proud Biomedics. His software solutions have streamlined several complex processes.',
+    author: 'Masoud Mbelwa — Biomedical Engineer, CEO @ Proud Biomedics',
   },
 ];
 
@@ -905,25 +910,31 @@ export const resumeSummary = {
       role: 'Founder & Lead Software Engineer',
       organization: 'GeneLabs Software Tz',
       summary:
-        'Leading product direction, architecture, and engineering delivery for custom systems, public-facing platforms, and internal operational tools.',
+        'Leading product engineering for Soko Mtaani, LeoTap, Gene Pharmacy POS, and client platforms including ZANEMA and Salum Transports.',
     },
     {
       period: '2022 - 2024',
       role: 'Full-Stack Software Engineer',
-      organization: 'Independent and collaborative delivery',
+      organization: 'Freelance & Client Projects',
       summary:
-        'Built backend APIs, dashboards, data models, and workflow systems for operational use cases across multiple domains.',
+        'Built client websites (ZANEMA, Salum Transports, RAKIASA), Android apps, REST APIs, and published the ClickPesa Laravel open-source package.',
     },
     {
-      period: 'Earlier',
-      role: 'Engineer, builder, and technical mentor',
-      organization: 'Academic, community, and early-stage projects',
+      period: '2019 - 2021',
+      role: 'Electronics & Telecommunications Diploma',
+      organization: 'Arusha Technical College',
       summary:
-        'Developed practical foundations in product building, problem analysis, and turning ideas into usable systems.',
+        'Completed diploma with hands-on IoT prototyping, embedded firmware development, PCB design, and smart home automation systems.',
     },
   ],
-  education: ['Bachelor-level engineering and applied software development foundation', 'Continuous self-directed learning through real product delivery'],
-  certifications: ['Practical experience-led portfolio of shipped systems', 'Ongoing specialization in secure web systems, operations platforms, and product architecture'],
+  education: [
+    'BSc Software Engineering — University of Dodoma (2021–Present)',
+    'Diploma in Electronics & Telecommunications — Arusha Technical College (2019–2021)',
+  ],
+  certifications: [
+    'Open-source contributor — ClickPesa Laravel package (Packagist)',
+    'Google Play published developer — Soko Mtaani, LeoTap',
+  ],
   techGroups: {
     Languages: ['JavaScript', 'TypeScript', 'PHP', 'Java', 'SQL'],
     Frontend: ['Next.js', 'React', 'Tailwind CSS', 'Responsive UI systems'],
