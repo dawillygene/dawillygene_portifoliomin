@@ -113,7 +113,7 @@ export default function AdminTeamPage() {
     <AdminLayout pageTitle="Team Members">
       <style>{CSS}</style>
       <div className="admin-form">
-        {saved && <div className="admin-success">✅ {saved}</div>}
+        {saved && <div className="admin-success"><i className="fa-solid fa-circle-check" style={{marginRight:"0.4rem"}} /> {saved}</div>}
 
         <div className="add-btn-row">
           <button className="admin-btn admin-btn-primary" onClick={openNew}>+ Add Team Member</button>
