@@ -101,7 +101,7 @@ export default function AdminTestimonialsPage() {
     <div style={{ display:'flex', gap:4, alignItems:'center' }}>
       {[1,2,3,4,5].map(n => (
         <button key={n} className="star-btn" type="button" onClick={() => setForm(f=>({...f,stars:n}))}>
-          {n <= form.stars ? '⭐' : '☆'}
+          {n <= form.stars ? '&#9733;' : '☆'}
         </button>
       ))}
       <span style={{ fontSize:'.75rem', color:'rgba(255,255,255,.35)', marginLeft:6 }}>{form.stars}/5</span>
@@ -112,7 +112,7 @@ export default function AdminTestimonialsPage() {
     <AdminLayout pageTitle="Testimonials">
       <style>{CSS}</style>
       <div className="admin-form">
-        {saved && <div className="admin-success">✅ {saved}</div>}
+        {saved && <div className="admin-success"><i className="fa-solid fa-circle-check" style={{marginRight:"0.4rem"}} /> {saved}</div>}
         <div className="add-btn-row">
           <button className="admin-btn admin-btn-primary" onClick={openNew}>+ Add Testimonial</button>
         </div>
