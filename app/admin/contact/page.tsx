@@ -50,7 +50,7 @@ interface ContactData {
 }
 
 const defaults: ContactData = {
-  email: 'contact@dawillygene.com',
+  email: 'dawillygene@gmail.com',
   phone: '+255 753 225 961',
   location: 'Dodoma, Tanzania',
   availability: 'Available for freelance & full-time',
@@ -97,7 +97,7 @@ export default function AdminContactPage() {
     <AdminLayout pageTitle="Contact Information">
       <style>{CSS}</style>
       <div className="admin-form">
-        {saved && <div className="admin-success">✅ Contact info saved successfully!</div>}
+        {saved && <div className="admin-success"><i className="fa-solid fa-circle-check" style={{marginRight:"0.4rem"}} /> Contact info saved successfully!</div>}
 
         {/* Live Preview */}
         <div className="contact-preview">
@@ -113,7 +113,7 @@ export default function AdminContactPage() {
           <div className="admin-grid-2">
             <div className="admin-field">
               <label className="admin-label">Email Address</label>
-              <input className="admin-input" type="email" value={data.email??''} onChange={e=>set('email',e.target.value)} placeholder="contact@dawillygene.com" />
+              <input className="admin-input" type="email" value={data.email??''} onChange={e=>set('email',e.target.value)} placeholder="dawillygene@gmail.com" />
             </div>
             <div className="admin-field">
               <label className="admin-label">Phone Number</label>
@@ -189,7 +189,7 @@ export default function AdminContactPage() {
         </div>
 
         <button className="admin-btn admin-btn-primary" onClick={handleSave} disabled={saving} style={{ minWidth:160 }}>
-          {saving ? 'Saving…' : '💾 Save Changes'}
+          {saving ? 'Saving…' : 'Save Changes'}
         </button>
       </div>
     </AdminLayout>
