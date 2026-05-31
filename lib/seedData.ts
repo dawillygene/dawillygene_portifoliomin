@@ -13,7 +13,7 @@ export async function seedDefaultData() {
     description:
       'Genelabs Software Tz is a Tanzanian software development firm delivering end-to-end solutions from concept to deployment.',
     established: 2024,
-    email: 'contact@dawillygene.com',
+    email: 'dawillygene@gmail.com',
     phone: '+255 753 225 961',
     location: 'Dodoma, Tanzania',
     website: 'dawillygene.com',
@@ -48,7 +48,7 @@ export async function seedDefaultData() {
     name: 'Dawilly Gene',
     realName: 'Elia William Mariki',
     role: 'Founder & Lead Software Engineer',
-    email: 'contact@dawillygene.com',
+    email: 'dawillygene@gmail.com',
     phone: '+255 753 225 961',
     location: 'Dodoma, Tanzania',
     bio: 'Founder of Genelabs Software Tz. Full-stack developer and IoT specialist with 5+ years building production-grade systems.',
@@ -63,5 +63,5 @@ export async function seedDefaultData() {
     published: true,
   });
 
-  console.log('✅ Default data seeded successfully.');
+  console.log('[OK] Default data seeded successfully.');
 }
