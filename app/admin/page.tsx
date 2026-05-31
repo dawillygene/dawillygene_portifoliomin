@@ -4,14 +4,14 @@ import AdminLayout from '@/components/AdminLayout';
 import Link from 'next/link';
 
 const cards = [
-  { href: '/admin/hero', label: 'Hero / Banner', desc: 'Edit tagline, headline & CTA', icon: '🖥️', color: '#38bdf8' },
-  { href: '/admin/services', label: 'Services', desc: 'Add, edit or remove services', icon: '⚙️', color: '#a78bfa' },
-  { href: '/admin/projects', label: 'Projects', desc: 'Manage portfolio projects', icon: '📁', color: '#34d399' },
-  { href: '/admin/experience', label: 'Experience', desc: 'Edit career timeline', icon: '🕐', color: '#fbbf24' },
-  { href: '/admin/team', label: 'Team Members', desc: 'Add co-workers & colleagues', icon: '👥', color: '#f43f5e' },
-  { href: '/admin/testimonials', label: 'Testimonials', desc: 'Manage client reviews', icon: '💬', color: '#6366f1' },
-  { href: '/admin/contact', label: 'Contact Info', desc: 'Update email, phone & socials', icon: '📨', color: '#14b8a6' },
-  { href: '/admin/company', label: 'Company Info', desc: 'Update Genelabs Software Tz details', icon: '🏢', color: '#fb923c' },
+  { href: '/admin/hero', label: 'Hero / Banner', desc: 'Edit tagline, headline & CTA', icon: 'fa-solid fa-display', color: '#38bdf8' },
+  { href: '/admin/services', label: 'Services', desc: 'Add, edit or remove services', icon: 'fa-solid fa-gears', color: '#a78bfa' },
+  { href: '/admin/projects', label: 'Projects', desc: 'Manage portfolio projects', icon: 'fa-solid fa-folder-open', color: '#34d399' },
+  { href: '/admin/experience', label: 'Experience', desc: 'Edit career timeline', icon: 'fa-solid fa-clock-rotate-left', color: '#fbbf24' },
+  { href: '/admin/team', label: 'Team Members', desc: 'Add co-workers & colleagues', icon: 'fa-solid fa-users', color: '#f43f5e' },
+  { href: '/admin/testimonials', label: 'Testimonials', desc: 'Manage client reviews', icon: 'fa-solid fa-comments', color: '#6366f1' },
+  { href: '/admin/contact', label: 'Contact Info', desc: 'Update email, phone & socials', icon: 'fa-solid fa-envelope', color: '#14b8a6' },
+  { href: '/admin/company', label: 'Company Info', desc: 'Update Genelabs Software Tz details', icon: 'fa-solid fa-building', color: '#fb923c' },
 ];
 
 const DASH_CSS = `
@@ -39,14 +39,14 @@ export default function AdminDashboard() {
     <AdminLayout pageTitle="Dashboard">
       <style>{DASH_CSS}</style>
       <div className="dash-welcome">
-        <h2>👋 Welcome to Genelabs Admin Panel</h2>
+        <h2><i className="fa-solid fa-hand" style={{ marginRight: '0.5rem' }} />Welcome to Genelabs Admin Panel</h2>
         <p>Use the cards below or the sidebar to manage all content on <strong style={{ color: '#38bdf8' }}>dawillygene.com</strong>. All changes are saved directly to Firebase and reflect live on the website.</p>
       </div>
 
       <div className="dash-grid">
         {cards.map(card => (
           <Link key={card.href} href={card.href} className="dash-card">
-            <div className="dash-card-icon">{card.icon}</div>
+            <div className="dash-card-icon"><i className={card.icon} style={{ color: card.color }} /></div>
             <div className="dash-card-label" style={{ color: card.color }}>{card.label}</div>
             <div className="dash-card-desc">{card.desc}</div>
             <span className="dash-card-arrow">↗</span>
