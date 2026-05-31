@@ -60,6 +60,22 @@ const emptyForm = (): Omit<Testimonial,'id'> => ({
   initials: '', published: true, order: 99,
 });
 
+interface StarSelectorProps {
+  stars: number;
+  onChange: (value: number) => void;
+}
+
+const StarSelector = ({ stars, onChange }: StarSelectorProps) => (
+  <div style={{ display:'flex', gap:4, alignItems:'center' }}>
+    {[1,2,3,4,5].map(n => (
+      <button key={n} className="star-btn" type="button" onClick={() => onChange(n)}>
+        {n <= stars ? '★' : '☆'}
+      </button>
+    ))}
+    <span style={{ fontSize:'.75rem', color:'rgba(255,255,255,.35)', marginLeft:6 }}>{stars}/5</span>
+  </div>
+);
+
 export default function AdminTestimonialsPage() {
   const [items, setItems] = useState<Testimonial[]>([]);
   const [showForm, setShowForm] = useState(false);
@@ -97,17 +113,6 @@ export default function AdminTestimonialsPage() {
     await load();
   };
 
-  const StarSelector = () => (
-    <div style={{ display:'flex', gap:4, alignItems:'center' }}>
-      {[1,2,3,4,5].map(n => (
-        <button key={n} className="star-btn" type="button" onClick={() => setForm(f=>({...f,stars:n}))}>
-          {n <= form.stars ? '&#9733;' : '☆'}
-        </button>
-      ))}
-      <span style={{ fontSize:'.75rem', color:'rgba(255,255,255,.35)', marginLeft:6 }}>{form.stars}/5</span>
-    </div>
-  );
-
   return (
     <AdminLayout pageTitle="Testimonials">
       <style>{CSS}</style>
@@ -136,7 +141,10 @@ export default function AdminTestimonialsPage() {
               </div>
               <div className="admin-field">
                 <label className="admin-label">Rating</label>
-                <StarSelector />
+                <StarSelector
+                  stars={form.stars}
+                  onChange={(value) => setForm(f=>({...f,stars:value}))}
+                />
               </div>
             </div>
 
