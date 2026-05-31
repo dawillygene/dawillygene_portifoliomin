@@ -35,6 +35,11 @@ export const metadata: Metadata = {
   description:
     'Software engineer building secure, scalable digital products for real business operations. Founder of GeneLabs Software Tz in Dodoma, Tanzania.',
   keywords: [
+    'Elia William Mariki',
+    'Elia Mariki',
+    'elia-william-mariki',
+    'dawillygene',
+    'Dawilly Gene',
     'software engineer',
     'product engineering',
     'engineering standards',
@@ -42,12 +47,11 @@ export const metadata: Metadata = {
     'backend API engineering',
     'business management platforms',
     'Tanzania',
-    'Dawilly Gene',
     'Next.js',
     'TypeScript',
   ],
-  authors: [{ name: 'Dawilly Gene', url: 'https://dawillygene.com' }],
-  creator: 'Dawilly Gene',
+  authors: [{ name: 'Elia William Mariki (Dawilly Gene)', url: 'https://dawillygene.com' }],
+  creator: 'Elia William Mariki (Dawilly Gene)',
   alternates: {
     canonical: 'https://dawillygene.com',
   },
@@ -56,13 +60,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://dawillygene.com',
     siteName: 'Dawilly Gene',
-    title: 'Dawilly Gene | Product Engineering Portfolio',
+    title: 'Dawilly Gene (Elia William Mariki) | Product Engineering Portfolio',
     description:
-      'Company-style software engineering portfolio featuring products, case studies, standards, services, writing, and recruiter-friendly experience.',
+      'Company-style software engineering portfolio featuring products, case studies, standards, services, writing, and recruiter-friendly experience by Elia William Mariki.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dawilly Gene | Product Engineering Portfolio',
+    title: 'Dawilly Gene (Elia William Mariki) | Product Engineering Portfolio',
     description:
       'Secure, scalable software systems for real business operations.',
   },
@@ -123,6 +127,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${playfairDisplay.variable} ${geistMono.variable} antialiased`}>
+        {/* Invisible SEO/Accessibility Signature Block */}
+        <span style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          padding: '0',
+          margin: '-1px',
+          overflow: 'hidden',
+          clip: 'rect(0, 0, 0, 0)',
+          whiteSpace: 'nowrap',
+          border: '0',
+        }}>
+          Website developed and maintained by Elia William Mariki (dawillygene), a systems software engineer based in Dodoma, Tanzania.
+        </span>
         <ThemeProvider>
           <FadeInObserver />
           <AuthProvider>{children}</AuthProvider>
