@@ -84,7 +84,7 @@ export const companyProfile = {
   subheadline:
     'A product engineering studio focused on business platforms, operational tooling, and high-trust software systems for teams that need reliability from day one.',
   location: 'Dodoma, Tanzania',
-  email: 'contact@dawillygene.com',
+  email: 'dawillygene@gmail.com',
   phone: '+255 753 225 961',
   availability: 'Available for product engineering, consulting, and senior software roles',
   primaryCta: { label: 'View Products', href: '/products' },
@@ -804,35 +804,42 @@ export const architectureDocs: ArchitectureDocRecord[] = [
 export const standards = [
   {
     title: 'API Design Standards',
+    image: '/standard-api-flow.png',
     items: [
       'Consistent resource naming and predictable endpoint structure',
       'Stable request-response contracts and explicit validation rules',
       'Pagination, filtering, and sorting conventions for data-heavy endpoints',
       'Structured error payloads with actionable failure states',
       'Version-awareness and backward compatibility thinking',
+      'Rate limiting headers and quota-aware response codes',
     ],
   },
   {
     title: 'Database Design Standards',
+    image: '/standard-database-erd.png',
     items: [
       'Clear naming conventions and relational consistency',
       'Practical normalization with denormalization only when justified',
       'Indexing strategy for reporting and transactional flows',
       'Soft delete, audit, and uniqueness rules where business-critical',
       'Migration safety and transaction-aware change planning',
+      'Foreign key constraints enforced at schema level, not only application layer',
     ],
   },
   {
     title: 'Authentication and Authorization Approach',
+    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&auto=format&fit=crop&q=80',
     items: [
       'Role-based access control with explicit permissions',
       'Protected administrative surfaces and least-privilege defaults',
       'Session and auth flow design aligned with system risk',
       'Security-sensitive actions treated as auditable operations',
+      'Multi-factor authentication readiness for sensitive admin panels',
     ],
   },
   {
     title: 'Testing Strategy',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&auto=format&fit=crop&q=80',
     items: [
       'Unit tests around domain logic and fragile utility boundaries',
       'Integration tests for permissions, data flows, and business rules',
@@ -843,6 +850,7 @@ export const standards = [
   },
   {
     title: 'Logging and Monitoring',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80',
     items: [
       'Meaningful event logging around operationally important actions',
       'Actionable monitoring signals for failures and degraded workflows',
@@ -851,6 +859,7 @@ export const standards = [
   },
   {
     title: 'Security Practices',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80',
     items: [
       'Input validation across boundaries',
       'Rate limiting and abuse-awareness for exposed surfaces',
@@ -860,6 +869,7 @@ export const standards = [
   },
   {
     title: 'Scalability Planning',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
     items: [
       'Query review and indexing for growth paths',
       'Service boundaries where complexity justifies them',
@@ -869,6 +879,7 @@ export const standards = [
   },
   {
     title: 'Documentation Standards',
+    image: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&auto=format&fit=crop&q=80',
     items: [
       'Architecture notes for maintainers',
       'Deployment and environment setup guidance',
@@ -878,19 +889,77 @@ export const standards = [
   },
   {
     title: 'Deployment Standards',
+    image: '/standard-cicd-pipeline.png',
     items: [
       'Environment parity awareness',
       'Config review before release',
       'Rollback thinking for risky changes',
       'Post-release validation on critical workflows',
+      'Blue-green or canary deployment strategies for zero-downtime releases',
     ],
   },
   {
     title: 'Backup and Recovery Thinking',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&auto=format&fit=crop&q=80',
     items: [
       'Data recovery considered during design, not after failure',
       'Operational actions evaluated for reversibility where possible',
       'Critical data stores and admin actions treated with recovery discipline',
+    ],
+  },
+  {
+    title: 'Code Review & Quality Gates',
+    image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&auto=format&fit=crop&q=80',
+    items: [
+      'Every pull request reviewed for logic correctness, naming clarity, and edge cases',
+      'Automated linting and formatting enforced before merge (ESLint, Prettier, PHP CS Fixer)',
+      'No direct pushes to main branch — all changes flow through feature branches',
+      'Review checklists for security-sensitive changes (auth, payments, data mutations)',
+      'Commit messages follow conventional commit standards for changelog generation',
+    ],
+  },
+  {
+    title: 'Error Handling & Resilience',
+    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&auto=format&fit=crop&q=80',
+    items: [
+      'All external API calls wrapped in try-catch with meaningful fallback behavior',
+      'User-facing errors display actionable messages, not raw stack traces',
+      'Network timeout and retry strategies for mobile and unreliable connections',
+      'Circuit breaker patterns considered for third-party payment and SMS integrations',
+      'Graceful degradation — the app continues working even when non-critical services fail',
+    ],
+  },
+  {
+    title: 'Mobile Development Standards',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=80',
+    items: [
+      'Offline-first architecture for markets with intermittent connectivity',
+      'Image compression and lazy loading to reduce data usage on mobile networks',
+      'Push notification strategy respecting user attention and battery life',
+      'Deep linking support for marketing campaigns and shared product URLs',
+      'Consistent gesture patterns and platform-specific UI conventions (Material Design, HIG)',
+    ],
+  },
+  {
+    title: 'Performance Optimization',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&auto=format&fit=crop&q=80',
+    items: [
+      'Lighthouse audits targeting 90+ scores for Performance, Accessibility, and SEO',
+      'Critical CSS inlined for sub-2-second First Contentful Paint',
+      'Database queries analyzed with EXPLAIN and optimized before deploying heavy features',
+      'Image assets served in WebP format with responsive srcset for multiple screen densities',
+      'Bundle analysis and tree-shaking to keep JavaScript payloads under 200KB gzipped',
+    ],
+  },
+  {
+    title: 'Accessibility & Internationalization',
+    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&auto=format&fit=crop&q=80',
+    items: [
+      'Semantic HTML elements used for all interactive components (buttons, nav, forms)',
+      'ARIA labels and roles added to custom UI elements for screen reader compatibility',
+      'Color contrast ratios meeting WCAG 2.1 AA standards across all themes',
+      'Keyboard navigation fully functional for all interactive workflows',
+      'Right-to-left (RTL) text direction support considered for Swahili and Arabic interfaces',
     ],
   },
 ];
@@ -1018,6 +1087,206 @@ export const blogPosts: BlogPostRecord[] = [
       },
     ],
   },
+  {
+    slug: 'offline-first-mobile-apps-for-emerging-markets',
+    title: 'Offline-First Mobile Apps For Emerging Markets',
+    excerpt:
+      'How to architect Android and cross-platform apps that stay usable when the network drops — a lesson from building Soko Mtaani and LeoTap in Tanzania.',
+    category: 'Mobile Engineering',
+    tags: ['Android', 'Offline-First', 'Firebase', 'React Native'],
+    publishedAt: '2026-04-18',
+    readingTime: '9 min read',
+    body: [
+      {
+        heading: 'Why offline-first is not optional in East Africa',
+        paragraphs: [
+          'In Dar es Salaam, Dodoma, and Zanzibar, mobile network coverage is improving but still unreliable during peak hours, in underground shops, and in rural last-mile delivery zones. If your app shows a blank screen or a spinning loader when the connection drops, users will uninstall it within a day.',
+          'Offline-first does not mean the app works entirely without the internet. It means the app caches enough state locally that users can browse products, review their cart, check previous orders, and queue new actions that sync automatically when connectivity returns.',
+        ],
+      },
+      {
+        heading: 'The architecture pattern that works',
+        paragraphs: [
+          'We use a local-first data layer built on SQLite (for Android) or AsyncStorage (for React Native), combined with a background sync service. When the user adds an item to their cart or submits a delivery address, the action is written to a local queue first, then pushed to Cloud Firestore or a REST API when the device regains connectivity.',
+          'The key principle is: write locally, sync remotely, resolve conflicts with last-write-wins for non-critical data and server-authoritative resolution for payments and inventory counts.',
+        ],
+      },
+      {
+        heading: 'Practical cache invalidation strategies',
+        paragraphs: [
+          'Product catalogs are cached with a TTL (time-to-live) of 30 minutes. Category metadata is cached for 2 hours. User session tokens are persisted in encrypted shared preferences with refresh-on-expiry logic. Images use a two-tier cache: in-memory LRU for the current session, disk cache for repeat visits.',
+          'The most important rule: never cache payment or transaction state. Those must always be server-authoritative to prevent double-charging or phantom orders.',
+        ],
+      },
+      {
+        heading: 'Handling sync failures gracefully',
+        paragraphs: [
+          'When a queued action fails to sync (e.g., the server returns a 409 conflict because inventory was depleted), the app displays a clear, localized error in Swahili or English explaining what happened and what the user can do next. Silent failures destroy trust faster than any other bug.',
+          'We also implement exponential backoff with jitter for retry logic, capped at 5 attempts over 10 minutes, before marking the action as failed and notifying the user.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'firebase-security-rules-for-multi-tenant-apps',
+    title: 'Firebase Security Rules For Multi-Tenant Apps',
+    excerpt:
+      'A practical guide to writing Firestore security rules that enforce tenant isolation, role-based access, and data integrity without a custom backend.',
+    category: 'Backend Security',
+    tags: ['Firebase', 'Security', 'Multi-Tenant', 'Firestore'],
+    publishedAt: '2026-03-25',
+    readingTime: '8 min read',
+    body: [
+      {
+        heading: 'The hidden risk of default Firestore rules',
+        paragraphs: [
+          'Firebase makes it incredibly easy to ship a working app in days. But the default security rules — especially the "test mode" rules that allow all reads and writes — are a ticking time bomb. I have personally audited three client projects where production Firestore databases were wide open to the internet because nobody changed the default rules after launch.',
+          'The first rule of Firebase security: your Firestore rules ARE your backend authorization layer. If you skip them, you have no authorization at all, regardless of what your frontend code checks.',
+        ],
+      },
+      {
+        heading: 'Tenant isolation with document-level rules',
+        paragraphs: [
+          'For multi-tenant apps like Gene Pharmacy POS, every document in the database includes a tenantId field. The security rule checks that the authenticated user\'s custom claim (set during sign-up by a Cloud Function) matches the document\'s tenantId. This prevents Pharmacy A from reading Pharmacy B\'s inventory or sales records.',
+          'The rule pattern looks like: allow read, write: if request.auth.token.tenantId == resource.data.tenantId. Simple, but it must be applied to every single collection and subcollection — missing even one collection creates a data leak.',
+        ],
+      },
+      {
+        heading: 'Role-based write restrictions',
+        paragraphs: [
+          'Beyond tenant isolation, we enforce role-based writes. A cashier can create sale records but cannot modify product prices. A manager can update prices but cannot delete financial ledger entries. An admin can do both but is still prevented from modifying audit logs.',
+          'These rules are enforced in Firestore security rules using custom claims: allow write: if request.auth.token.role in ["admin", "manager"] for price updates, and allow delete: if false for audit collections (nobody can delete audit logs, not even admins).',
+        ],
+      },
+      {
+        heading: 'Validating data shape in rules',
+        paragraphs: [
+          'Firestore rules can also validate the shape of incoming data. We check that required fields exist, that numeric values are positive, that string fields do not exceed maximum lengths, and that status fields contain only valid enum values. This prevents both accidental bugs and deliberate data injection.',
+          'Example: allow create: if request.resource.data.keys().hasAll(["productId", "quantity", "unitPrice"]) && request.resource.data.quantity > 0. This is not a replacement for frontend validation, but it is the last line of defense before data hits the database.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'integrating-mobile-money-payments-in-laravel',
+    title: 'Integrating Mobile Money Payments In Laravel',
+    excerpt:
+      'Step-by-step patterns for integrating M-Pesa, Tigo Pesa, and Airtel Money into Laravel applications — with real examples from the ClickPesa package.',
+    category: 'Payment Engineering',
+    tags: ['Laravel', 'Payments', 'M-Pesa', 'Africa'],
+    publishedAt: '2026-03-08',
+    readingTime: '10 min read',
+    body: [
+      {
+        heading: 'Why payment integration in Africa is different',
+        paragraphs: [
+          'Unlike Stripe or PayPal markets where card payments dominate, East African commerce runs primarily on mobile money. M-Pesa alone processes over $300 billion annually across the region. If your business app does not support USSD-based mobile money payments, you are excluding 80%+ of potential paying customers.',
+          'The challenge is that each provider (Vodacom M-Pesa, Tigo Pesa, Airtel Money, Halotel) has its own API specification, callback format, timeout behavior, and reconciliation process. Building and maintaining individual integrations is expensive.',
+        ],
+      },
+      {
+        heading: 'The aggregator pattern with ClickPesa',
+        paragraphs: [
+          'Payment aggregators like ClickPesa provide a unified API that routes transactions to the correct mobile money provider based on the customer\'s phone number prefix. I built and published the clickpesa/clickpesa-laravel package on Packagist to standardize this integration for Laravel developers.',
+          'The package provides a clean service class: ClickPesa::charge($phoneNumber, $amount, $reference). Internally, it handles provider detection, API authentication, request signing, and callback verification. The developer only needs to implement a webhook controller to handle payment confirmations.',
+        ],
+      },
+      {
+        heading: 'Handling payment callbacks securely',
+        paragraphs: [
+          'Mobile money callbacks arrive asynchronously — sometimes within 5 seconds, sometimes after 30 minutes if the customer delays USSD confirmation. Your application must handle this gracefully: create the order with a "pending_payment" status, listen for the callback, verify its authenticity (signature + IP whitelist), and only then transition the order to "confirmed".',
+          'Critical rule: never trust the callback amount. Always verify that the amount received matches the amount you requested. Some integrations have been exploited by attackers sending fake callbacks with modified amounts.',
+        ],
+      },
+      {
+        heading: 'Reconciliation and financial reporting',
+        paragraphs: [
+          'Every payment transaction must be recorded in a dedicated payments ledger table, separate from the orders table. This ledger includes: transaction_id, provider, phone_number, amount_requested, amount_received, status, callback_payload (JSON), and timestamps. This separation makes financial reconciliation possible without querying the orders table.',
+          'We run daily reconciliation jobs that compare our ledger against the provider\'s transaction report (downloaded via API or CSV). Discrepancies are flagged automatically and reviewed by the finance team before the day\'s books are closed.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'nextjs-seo-strategy-for-portfolio-and-saas-sites',
+    title: 'Next.js SEO Strategy For Portfolio And SaaS Sites',
+    excerpt:
+      'Practical techniques for maximizing search engine visibility in Next.js applications — from structured data and metadata to sitemap generation and content strategy.',
+    category: 'Frontend Engineering',
+    tags: ['Next.js', 'SEO', 'React', 'Performance'],
+    publishedAt: '2026-02-28',
+    readingTime: '7 min read',
+    body: [
+      {
+        heading: 'Why most developer portfolios are invisible to Google',
+        paragraphs: [
+          'The majority of developer portfolio sites built with React or Next.js make the same mistake: they rely entirely on client-side rendering with no meaningful metadata, no structured data, no sitemap, and no internal linking strategy. Google can technically render JavaScript, but it deprioritizes pages that require heavy JS execution compared to pages that serve pre-rendered HTML with clear semantic structure.',
+          'A portfolio that cannot be found on Google when someone searches your name is not a portfolio — it is a private document that only works when you send someone the direct link.',
+        ],
+      },
+      {
+        heading: 'The metadata foundation',
+        paragraphs: [
+          'Every page in your Next.js app should export a metadata object or use generateMetadata for dynamic pages. At minimum, include: a unique title tag (under 60 characters), a compelling meta description (under 155 characters), Open Graph tags for social sharing (og:title, og:description, og:image), and canonical URLs to prevent duplicate content issues.',
+          'For portfolio sites, also include JSON-LD structured data using the Person schema. This tells Google explicitly who you are, what your job title is, where you are located, and links to your social profiles. This is how Google generates those rich knowledge panel snippets.',
+        ],
+      },
+      {
+        heading: 'Sitemap and robots.txt automation',
+        paragraphs: [
+          'Next.js App Router supports sitemap.ts and robots.ts files that generate XML sitemaps and robots directives at build time. Your sitemap should include every public page, product case study, and blog post with accurate lastModified dates. Exclude admin pages, API routes, and draft content.',
+          'Submit your sitemap to Google Search Console immediately after deployment. Monitor the Coverage report weekly for the first month to catch indexing errors, redirect chains, or pages blocked by robots.txt.',
+        ],
+      },
+      {
+        heading: 'Content strategy that actually drives traffic',
+        paragraphs: [
+          'Technical blog posts are the highest-leverage SEO asset for developer portfolios. Each article targets a specific long-tail keyword (e.g., "Firebase security rules multi-tenant") that your competitors are unlikely to rank for. Over time, these articles build domain authority and drive organic traffic from developers, recruiters, and potential clients searching for solutions you have already built.',
+          'Publish consistently — even one well-written, 1000-word article per month with proper heading hierarchy, internal links to your products page, and external references to documentation will compound significantly over 6-12 months.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'database-indexing-strategies-that-actually-matter',
+    title: 'Database Indexing Strategies That Actually Matter',
+    excerpt:
+      'Beyond "just add an index" — practical PostgreSQL and MySQL indexing patterns for real business applications with reporting, search, and transactional workloads.',
+    category: 'Database Engineering',
+    tags: ['PostgreSQL', 'MySQL', 'Performance', 'Backend'],
+    publishedAt: '2026-01-15',
+    readingTime: '8 min read',
+    body: [
+      {
+        heading: 'The cost of missing indexes in production',
+        paragraphs: [
+          'A missing index on a frequently queried column can turn a 15ms query into a 4-second full table scan as your data grows past 100,000 rows. I have personally debugged production slowdowns in pharmacy POS systems where the sales_date column on a ledger table with 500,000+ records had no index — causing the daily sales report to take 12 seconds to load instead of 200ms.',
+          'The fix took 30 seconds (CREATE INDEX idx_sales_date ON sales(sale_date)), but finding the problem required analyzing slow query logs, running EXPLAIN ANALYZE, and tracing the issue through three layers of application code. The lesson: index planning should happen during schema design, not during incident response.',
+        ],
+      },
+      {
+        heading: 'Composite indexes and column order',
+        paragraphs: [
+          'A composite index on (tenant_id, created_at) is not the same as an index on (created_at, tenant_id). The column order determines which queries the index can accelerate. Place the most selective column (the one that filters the most rows) first, and the range/sort column second.',
+          'For multi-tenant applications, the pattern is almost always: (tenant_id, date_column) because every query is scoped to a single tenant first, then filtered or sorted by date. This single composite index often eliminates the need for separate indexes on each column.',
+        ],
+      },
+      {
+        heading: 'When NOT to add indexes',
+        paragraphs: [
+          'Indexes are not free. Every index consumes disk space and slows down INSERT, UPDATE, and DELETE operations because the database must update the index tree alongside the table data. For write-heavy tables (like event logs, sensor readings, or audit trails), adding too many indexes can degrade write performance by 30-50%.',
+          'The rule of thumb: index columns that appear in WHERE, JOIN, and ORDER BY clauses of your most frequent queries. Do not index boolean columns with low cardinality (e.g., is_active with only true/false values) — the index will not help because it cannot filter enough rows to justify the lookup cost.',
+        ],
+      },
+      {
+        heading: 'Partial indexes and expression indexes',
+        paragraphs: [
+          'PostgreSQL supports partial indexes: CREATE INDEX idx_active_orders ON orders(created_at) WHERE status = \'active\'. This index is smaller and faster because it only includes rows matching the condition. Use this pattern for "hot" queries that only care about a subset of your data (active orders, unread notifications, pending approvals).',
+          'Expression indexes are equally powerful: CREATE INDEX idx_lower_email ON users(LOWER(email)). This makes case-insensitive email lookups fast without requiring your application to normalize email casing before every query.',
+        ],
+      },
+    ],
+  },
 ];
 
 export const contactProjectTypes = [
@@ -1029,12 +1298,35 @@ export const contactProjectTypes = [
   'Senior engineering role',
 ];
 
-export const contactBudgetRanges = [
-  '$1k - $5k',
-  '$5k - $15k',
-  '$15k - $40k',
-  '$40k+',
-  'Not sure yet',
+export const contactBudgetRanges = {
+  TZS: [
+    'TZS 2M - 10M (~$750 - $3,700)',
+    'TZS 10M - 35M (~$3,700 - $13,000)',
+    'TZS 35M - 100M (~$13,000 - $37,000)',
+    'TZS 100M+ (~$37,000+)',
+    'Not sure yet',
+  ],
+  USD: [
+    '$1k - $5k',
+    '$5k - $15k',
+    '$15k - $40k',
+    '$40k+',
+    'Not sure yet',
+  ],
+};
+
+export const contactCountries = [
+  'Tanzania',
+  'Kenya',
+  'Uganda',
+  'Rwanda',
+  'Burundi',
+  'Mozambique',
+  'DRC',
+  'United States',
+  'United Kingdom',
+  'UAE',
+  'Other',
 ];
 
 export const contactTimelineRanges = ['ASAP', '2-4 weeks', '1-3 months', '3+ months', 'Flexible'];
