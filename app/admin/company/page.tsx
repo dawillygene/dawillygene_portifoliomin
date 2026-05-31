@@ -63,7 +63,7 @@ const defaults: CompanyData = {
   tagline: 'Building the future, one line at a time',
   description: 'Genelabs Software Tz is a software company founded by Dawilly Gene, delivering innovative digital solutions across web, mobile, AI and system integrations.',
   established: '2019',
-  email: 'contact@dawillygene.com',
+  email: 'dawillygene@gmail.com',
   phone: '+255 753 225 961',
   location: 'Dodoma, Tanzania',
   website: 'https://dawillygene.com',
@@ -110,7 +110,7 @@ export default function AdminCompanyPage() {
     <AdminLayout pageTitle="Company Info">
       <style>{CSS}</style>
       <div className="admin-form">
-        {saved && <div className="admin-success">✅ Company info saved!</div>}
+        {saved && <div className="admin-success"><i className="fa-solid fa-circle-check" style={{marginRight:"0.4rem"}} /> Company info saved!</div>}
 
         {/* Header Preview */}
         <div className="company-header">
@@ -152,7 +152,7 @@ export default function AdminCompanyPage() {
           <div className="admin-grid-2">
             <div className="admin-field">
               <label className="admin-label">Company Email</label>
-              <input className="admin-input" type="email" value={data.email??''} onChange={e=>set('email',e.target.value)} placeholder="contact@dawillygene.com" />
+              <input className="admin-input" type="email" value={data.email??''} onChange={e=>set('email',e.target.value)} placeholder="dawillygene@gmail.com" />
             </div>
             <div className="admin-field">
               <label className="admin-label">Phone</label>
@@ -186,7 +186,7 @@ export default function AdminCompanyPage() {
         </div>
 
         <button className="admin-btn admin-btn-primary" onClick={handleSave} disabled={saving} style={{ minWidth:160 }}>
-          {saving ? 'Saving…' : '💾 Save Changes'}
+          {saving ? 'Saving…' : 'Save Changes'}
         </button>
       </div>
     </AdminLayout>
