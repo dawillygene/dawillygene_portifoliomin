@@ -83,7 +83,7 @@ export default function AdminHeroPage() {
     <AdminLayout pageTitle="Hero / Banner">
       <style>{FORM_CSS}</style>
       <div className="admin-form">
-        {saved && <div className="admin-success">✅ Hero section saved successfully!</div>}
+        {saved && <div className="admin-success"><i className="fa-solid fa-circle-check" style={{marginRight:"0.4rem"}} /> Hero section saved successfully!</div>}
 
         <div className="admin-section">
           <div className="admin-section-title">Status Badge</div>
