@@ -20,6 +20,7 @@ import {
 import TechStackSelector from '@/components/TechStackSelector';
 import ArchitectureVisualizer from '@/components/ArchitectureVisualizer';
 import EngagementProcess from '@/components/EngagementProcess';
+import FeaturedProductCard from '@/components/FeaturedProductCard';
 
 const featuredProducts = products.filter((product) => product.featured).slice(0, 3);
 
@@ -104,37 +105,46 @@ export default function HomeExperience() {
             <h2>Flagship systems with technical depth and clear business framing</h2>
             <p>Each product is presented with problem context, value, architecture signals, and a direct path into case study detail.</p>
           </div>
-          <div className="feature-grid">
-            {featuredProducts.map((product) => (
-              <article key={product.slug} className="glass-card product-card">
-                <div className="card-meta-row">
-                  <span className="tag">{product.industryDomain}</span>
-                  <span className="status-pill">{product.status}</span>
-                </div>
-                <h3 style={{ marginBottom: '0.65rem' }}>{product.name}</h3>
-                <p style={{ marginBottom: '1rem' }}>{product.shortSummary}</p>
-                <ul className="clean-list" style={{ marginBottom: '1rem' }}>
-                  <li>
-                    <strong>Problem:</strong> {product.problemSolved}
-                  </li>
-                  <li>
-                    <strong>Value:</strong> {product.businessValue}
-                  </li>
-                </ul>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
-                  {product.techStack.slice(0, 4).map((item) => (
-                    <span key={item} className="tag">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <Link href={`/products/${product.slug}`} className="btn-secondary" style={{ marginTop: 'auto' }}>
-                  View Case Study
-                </Link>
-              </article>
+
+          <div style={{ display: 'grid', gap: '2rem' }}>
+            {featuredProducts.map((product, idx) => (
+              <FeaturedProductCard key={product.slug} product={product} index={idx} />
             ))}
           </div>
         </div>
+
+        <style>{`
+          @media (min-width: 768px) {
+            .fp-showcase-card {
+              grid-template-columns: 1fr 1fr !important;
+            }
+          }
+          @media (min-width: 1024px) {
+            .fp-showcase-card {
+              grid-template-columns: 1.15fr 0.85fr !important;
+            }
+          }
+          .fp-showcase-card:hover .fp-float-wrapper img {
+            transform: translateY(-8px) scale(1.02);
+          }
+          .fp-mockup {
+            background:
+              linear-gradient(135deg, rgba(15, 93, 122, 0.03) 0%, transparent 50%),
+              linear-gradient(225deg, rgba(15, 138, 120, 0.03) 0%, transparent 50%);
+          }
+          [data-theme="dark"] .fp-mockup {
+            background:
+              linear-gradient(135deg, rgba(83, 176, 191, 0.04) 0%, transparent 50%),
+              linear-gradient(225deg, rgba(109, 209, 177, 0.04) 0%, transparent 50%);
+          }
+          .fp-float-wrapper {
+            animation: fp-float 6s ease-in-out infinite;
+          }
+          @keyframes fp-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+        `}</style>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
